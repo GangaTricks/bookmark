@@ -1601,45 +1601,45 @@ console.log('Starting the quiz...');
 // Inside the displayQuestion() function in the JavaScript code
 // Add a button to bookmark the current question
 // Inside the displayQuestion() function in the JavaScript code
-// Add a button to bookmark the current question
-const bookmarkButton = document.createElement("button");
-    bookmarkButton.textContent = getBookmarkedQuestions().includes(currentQuestionIndex) ? "Bookmarked" : "Bookmark";
-    bookmarkButton.id = "bookmark-button"; // Add id to the button
-    bookmarkButton.classList.add("btn", "btn-info", "mb-3"); // Add margin-bottom for spacing
-    bookmarkButton.onclick = () => {
-        bookmarkQuestion(currentQuestionIndex);
-    };
-    questionContainer.insertBefore(bookmarkButton, questionContainer.firstChild); // Insert before the question
+// Add a button to bookmark the current questionconst bookmarkButton = document.createElement("button");
+   bookmarkButton.textContent = getBookmarkedQuestions(currentTopicIndex).includes(currentQuestionIndex) ? "Bookmarked" : "Bookmark";
+   bookmarkButton.id = "bookmark-button";
+   bookmarkButton.classList.add("btn", "btn-info", "mb-3");
+   bookmarkButton.onclick = () => {
+       bookmarkQuestion(currentTopicIndex, currentQuestionIndex);
+   };
+   questionContainer.insertBefore(bookmarkButton, questionContainer.firstChild); // Insert before the question
 }
 
 // Add this function to handle bookmarking of questions
-function bookmarkQuestion(questionIndex) {
-    const bookmarkedQuestions = getBookmarkedQuestions();
-    const bookmarkButton = document.getElementById("bookmark-button");
+ function bookmarkQuestion(topicIndex, questionIndex) {
+       const bookmarkedQuestions = getBookmarkedQuestions(topicIndex);
+       const bookmarkButton = document.getElementById("bookmark-button");
 
-    if (!bookmarkedQuestions.includes(questionIndex)) {
-        bookmarkedQuestions.push(questionIndex);
-        setBookmarkedQuestions(bookmarkedQuestions);
-        bookmarkButton.textContent = "Bookmarked"; // Update button text to "Bookmarked"
-    } else {
-        const indexToRemove = bookmarkedQuestions.indexOf(questionIndex);
-        bookmarkedQuestions.splice(indexToRemove, 1);
-        setBookmarkedQuestions(bookmarkedQuestions);
-        bookmarkButton.textContent = "Bookmark"; // Update button text to "Bookmark"
-    }
-}
+       const questionIdentifier = `${topicIndex}-${questionIndex}`;
+
+       if (!bookmarkedQuestions.includes(questionIdentifier)) {
+           bookmarkedQuestions.push(questionIdentifier);
+           setBookmarkedQuestions(topicIndex, bookmarkedQuestions);
+           bookmarkButton.textContent = "Bookmarked";
+       } else {
+           const indexToRemove = bookmarkedQuestions.indexOf(questionIdentifier);
+           bookmarkedQuestions.splice(indexToRemove, 1);
+           setBookmarkedQuestions(topicIndex, bookmarkedQuestions);
+           bookmarkButton.textContent = "Bookmark";
+       }
+   }
 
 
 // Add this function to retrieve the bookmarked questions from the cookie
-function getBookmarkedQuestions() {
-    const bookmarkedQuestionsString = getCookie("bookmarkedQuestions");
-    return bookmarkedQuestionsString ? JSON.parse(bookmarkedQuestionsString) : [];
-}
+ function getBookmarkedQuestions(topicIndex) {
+       const bookmarkedQuestionsString = getCookie(`bookmarkedQuestions-${topicIndex}`);
+       return bookmarkedQuestionsString ? JSON.parse(bookmarkedQuestionsString) : [];
+   }
 
-// Add this function to set the bookmarked questions in the cookie
-function setBookmarkedQuestions(bookmarkedQuestions) {
-    setCookie("bookmarkedQuestions", JSON.stringify(bookmarkedQuestions));
-}
+   function setBookmarkedQuestions(topicIndex, bookmarkedQuestions) {
+       setCookie(`bookmarkedQuestions-${topicIndex}`, JSON.stringify(bookmarkedQuestions));
+   }
 
 // Add this function to get a cookie by name
 function getCookie(name) {
@@ -1904,9 +1904,8 @@ function goToHome() {
 
     console.log("Arrived at home.");
 }
-
-function showBookmarkedQuestions() {
-    const bookmarkedQuestions = getBookmarkedQuestions();
+ function showBookmarkedQuestions() {
+       const bookmarkedQuestions = getBookmarkedQuestions(currentTopicIndex);
     const bookmarkedQuestionsContainer = document.getElementById("bookmarked-questions-container");
     bookmarkedQuestionsContainer.innerHTML = ""; // Clear previous content
 
