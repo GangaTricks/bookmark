@@ -1574,42 +1574,47 @@ console.log('Starting the quiz...');
     }
 
     function displayQuestion() {
-        const currentTopic = topics[currentTopicIndex];
-        const currentQuestion = currentTopic.questions[currentQuestionIndex];
-        const questionContainer = document.querySelector(".layer.active .question-container");
-        const optionsContainer = document.getElementById("options-container");
-        const resultContainer = document.getElementById("result-container");
-        const reviewButton = document.getElementById("review-button");
+    const currentTopic = topics[currentTopicIndex];
+    const currentQuestion = currentTopic.questions[currentQuestionIndex];
+    const questionContainer = document.querySelector(".layer.active .question-container");
+    const optionsContainer = document.getElementById("options-container");
+    const resultContainer = document.getElementById("result-container");
+    const reviewButton = document.getElementById("review-button");
 
-        questionContainer.innerHTML = `<h3 style="text-align: left;">${currentTopic.topic} - Question ${currentQuestionIndex + 1}</h3>${currentQuestion.question}`;
-        optionsContainer.innerHTML = "";
+    // Display question and options
+    questionContainer.innerHTML = `<h3 style="text-align: left;">${currentTopic.topic} - Question ${currentQuestionIndex + 1}</h3>${currentQuestion.question}`;
+    optionsContainer.innerHTML = "";
+    
+    currentQuestion.options.forEach((option, index) => {
+        const optionElement = document.createElement("div");
+        optionElement.classList.add("option");
+        optionElement.innerHTML = `
+            <input type="radio" name="option" value="${option}" id="option${index + 1}">
+            <label for="option${index + 1}">${option}</label>
+        `;
+        optionsContainer.appendChild(optionElement);
+    });
 
-        currentQuestion.options.forEach((option, index) => {
-            const optionElement = document.createElement("div");
-            optionElement.classList.add("option");
-            optionElement.innerHTML = `
-                <input type="radio" name="option" value="${option}" id="option${index + 1}">
-                <label for="option${index + 1}">${option}</label>
-            `;
-            optionsContainer.appendChild(optionElement);
-        });
+    // Display result containers and update review button
+    resultContainer.style.display = "none";
+    updateReviewButton();
+    displaySavedQuestion();
 
-        resultContainer.style.display = "none";
-        updateReviewButton();
-        displaySavedQuestion();
-
-// Inside the displayQuestion() function in the JavaScript code
-// Add a button to bookmark the current question
-// Inside the displayQuestion() function in the JavaScript code
-// Add a button to bookmark the current questionconst bookmarkButton = document.createElement("button");
-   bookmarkButton.textContent = getBookmarkedQuestions(currentTopicIndex).includes(currentQuestionIndex) ? "Bookmarked" : "Bookmark";
-   bookmarkButton.id = "bookmark-button";
-   bookmarkButton.classList.add("btn", "btn-info", "mb-3");
-   bookmarkButton.onclick = () => {
-       bookmarkQuestion(currentTopicIndex, currentQuestionIndex);
-   };
-   questionContainer.insertBefore(bookmarkButton, questionContainer.firstChild); // Insert before the question
+    // Add a button to bookmark the current question
+    const bookmarkButton = document.createElement("button");
+    bookmarkButton.textContent = getBookmarkedQuestions(currentTopicIndex).includes(currentQuestionIndex) ? "Bookmarked" : "Bookmark";
+    bookmarkButton.id = "bookmark-button";
+    bookmarkButton.classList.add("btn", "btn-info", "mb-3");
+    bookmarkButton.onclick = () => {
+        bookmarkQuestion(currentTopicIndex, currentQuestionIndex);
+        // Update the bookmark button text after clicking
+        bookmarkButton.textContent = getBookmarkedQuestions(currentTopicIndex).includes(currentQuestionIndex) ? "Bookmarked" : "Bookmark";
+    };
+    
+    // Insert the bookmark button before the question
+    questionContainer.insertBefore(bookmarkButton, questionContainer.firstChild);
 }
+
 
 // Add this function to handle bookmarking of questions
  function bookmarkQuestion(topicIndex, questionIndex) {
