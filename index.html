@@ -1,0 +1,2076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>♚ GangaTricks</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+body {
+    margin: 0;
+    padding: 2px;
+    font-family: 'Arial', sans-serif;
+    background-color: ; /* Medium green color */
+    color: #000; /* Set text color to deep black */
+    font-weight: bold; /* Make the font bold */
+    text-align: center;
+    overflow-x: hidden;
+    /* Adding a blurred background with medium green color */
+}
+
+
+
+/* Additional style for layer5 to disable the quiz-container background */
+.layer5 {
+    background-color: transparent or rgba(0, 0, 0, 0); /* Set background to transparent */
+}
+
+
+
+.quiz-container {
+	
+    width: auto;
+    height: autopx; /* Set the desired height */
+    padding: px;
+    display: flex; /* Use flexbox for layout */
+    align-items: center;
+    justify-content: space-between;
+    justify-content: center;
+}
+
+.layer {
+    background-color: #fff; /* White background for each layer */
+    padding: 00px; /* Adjust padding as needed */
+    border-radius: 10px; /* Rounded corners for each layer */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Box shadow for each layer */
+    margin-top: 20px; /* Adjust margin as needed */
+}
+
+        .layer {
+            display: none;
+            text-align: center;
+        }
+
+        .layer.active {
+            display: block;
+        }
+
+	/* Set the background to transparent in layer5 scope */
+        .layer5 .quiz-container {
+            background-color: transparent;
+            box-shadow: none;
+        }
+
+        .layer5-content {
+            position: relative;
+            z-index: 2; /* Ensure the content appears above the quiz-container 	background */
+        }
+
+
+        .option {
+            margin-bottom: 10px;
+        }
+
+  .navbar {
+            background-color: none;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px;
+    border-radius: 3px; /* Rounded corners */
+   
+        }
+    .navbar a {
+            float: left;
+            display: block;
+            color: #000000;
+            text-align: left;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #E0FFFF;
+            color: black;
+        }
+
+        .navbar a.active {
+            background-color: #000000;
+            color: white;
+          padding: 23px;
+    border-radius: 12px; /* Rounded corners */
+        }
+
+        @media screen and (max-width: 600px) {
+            .navbar-toggle {
+                display: block;
+            }
+
+            .navbar a {
+                float: none;
+                width: 100%;
+            }
+
+            .navbar a:not(.navbar-toggle) {
+                display: none; /* Initially hide links in mobile view */
+            }
+
+            .navbar.show-links a {
+                display: block; /* Show links when the navbar has the show-links class */
+            }
+        }
+
+
+.gate {
+    align-self: flex-start;
+    background-color: #FF4500;
+    color: #ffffff;
+    border: 2px solid #3498db;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    text-decoration: none; /* Remove underlines from links */
+    display: inline-block;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.gate:hover {
+    background-color:  #F0FFF0; /* Darker background color on hover */
+    color: #00008B; /* Lighter text color on hover */
+}
+
+.gate1 {
+    align-self: flex-start;
+    background-color: #FF4500;
+    color: #ffffff;
+    border: 2px solid #3498db;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    text-decoration: none; /* Remove underlines from links */
+    display: inline-block;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+}
+.gate1:hover {
+    background-color:  #F0FFF0; /* Darker background color on hover */
+    color: #00008B; /* Lighter text color on hover */
+}
+#topic-buttons .btn {
+  font-size: 30px; /* Adjust the font size as needed */
+  padding: 15px 20px; /* Adjust the padding as needed */
+}
+
+
+@keyframes backgroundAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+div {
+  position: relative;
+  overflow: shown; /* Changed "shown" to "hidden" for a better visual effect */
+}
+
+.siva:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(90deg, #ff8c00, #8a2be2, #ff8c00);
+  background-size: 200% 200%;
+  animation: backgroundAnimation 5s ease-in-out infinite; /* Adjust the duration and timing function as needed */
+  opacity: 0.8; /* Adjust the opacity for a softer effect */
+  border-radius: 10px; /* Add border-radius for rounded corners */
+  filter: blur(10px); /* Add a slight blur effect */
+}
+    
+    .siva {
+      position: relative;
+      z-index: 1;
+    }	
+    </style>
+</head>
+<body> 
+  <div class="navbar">
+    <a href="#" class="active navbar-toggle" onclick="toggleLinks()" style="font-size: 20px;"><b style="font-size: 28px;">≣</b> Menu</a>
+    <a href="#" class="btn btn-success" onclick="goToHome()" style="color: white; background-color: #28a745; font-size: 20px;"><span style='font-size:26px;'>&#x1F3E0;</span>Home</a>
+    <a href="#" class="btn btn-success" onclick="goToHub()" style="color: white; background-color: #28a745; font-size: 20px;"><span style='font-size:26px; color: white; background-color: #28a745;'>▢</span>  Awareness</a>
+    <a href="English/English_1.html" class="btn btn-success" onclick="goToEnglish()" style="color: white; background-color: #28a745; font-size: 20px;"><span style='font-size:26px; color: white; background-color: #28a745;'>▢</span>  English</a>
+    <a href="https://gangatricks.github.io/0/"><span style='font-size:26px;'>▢</span>  Exit Quiz</a>
+	  <a class="bookmarks"><span style='font-size:26px;'>▢ </span></a>
+</div>
+	
+<div class="container quiz-container">
+    <div class="layer active" id="layer1">
+        <h1><b>You Are Welcome</b></h1>
+<h10 style="display: shown;">You're on Trend Plateform</h10>
+<h10 style="display: none;">Go to the Trend Plateform, Please use Home from the Menu</h10>
+<h3>Start Your Quiz</h3>
+        <button class="btn btn-primary" onclick="goToTopics()" style="font-size: 80px;">Start</button>
+        <!-- Add the new button with the desired URL -->
+<div class="siva" style="display: none;"><p1 class="shiva"><h5><b>ॐ त्र्यम्बकं यजामहे सुगन्धिं पुष्टिवर्धनम्
+उर्वारुकमिव बन्धनान्मृत्योर्मुक्षीय माऽमृतात्॥</b></h5></p1></div>
+<div>
+
+            <button class="btn btn-primary" onclick="goToHub()" style="text-align: left; display: none;">General Studies</button>
+</div>
+<div>
+  <button class="btn btn-primary" onclick="goToEnglish()" style="text-align: left; display: none;">General English</button>
+</div>
+<div>
+  <button class="btn btn-primary" onclick="goToWebsite()" style="text-align: left; display: none;">Visit Website</button>
+
+    </div>
+</div>
+
+
+    <div class="layer" id="layer2">
+      
+       <button class="gate" onclick="navigate('layer1')" style="font-size:30px; text-align: left;"><span style='font-size:30px;'>&#9194;</span>Previous</button>
+    <button class="gate1" onclick="navigate('layer3')" style="font-size:30px; text-align: right;">Next<span style='font-size:30px;'>&#9193;</span></button>
+      
+        <button class="btn btn-success" onclick="goToHome()" style="text-align: left; display: none;">Go to Home</button>
+     
+        <h1>Topics</h1>
+        <div id="topic-buttons" class="btn-group-vertical"></div>
+    </div>
+
+    <div class="layer" id="layer3">
+       <button class="gate" onclick="navigate('layer2')" style="font-size:30px; text-align: left;"><span style='font-size:30px;'>&#9194;</span>Previous</button>
+    <button class="gate1" onclick="navigate('layer5')" style="font-size:30px; text-align: right;">Next<span style='font-size:30px;'>&#9193;</span></button>
+
+        <button class="btn btn-success" onclick="goToHome()" style="text-align: left; display: none;">Go to Home</button>
+      
+<!-- Add the jump-to-question elements here -->
+    <p>
+<label for="jumpToQuestion">Jump:</label>
+    <input type="number" id="jumpToQuestion" min="1" max="100"> <!-- Adjust max value as needed -->
+    <button class="btn btn-primary" onclick="jumpToQuestion()">Jump</button>
+
+
+<button class="btn btn-warning" onclick="markForReview()" id="review-button" style="background-color: #FFA500; font-size:20px;"><b>Mark for Review</b></button>
+
+</p>
+
+
+        <div class="question-container" style="font-size:20px;"></div>
+<p></p>
+        <div id="options-container" style="font-size:20px;"></div>
+
+        <button class="btn btn-primary" onclick="goToPreviousQuestion()" style="font-size:25px; display: none;">Previous Question</button>
+        <button class="btn btn-info" onclick="saveQuestion()" style="font-size:25px; display: none;">Save Answer</button>
+        
+<p></p>
+<p>
+<button class="btn btn-danger" onclick="submitTest()" style="font-size:25px;">Submit Test</button>
+<button class="btn btn-primary" onclick="goToNextQuestion()" style="font-size:25px; display: none;">Next Question</button>
+        </p>
+        <div id="result-container"></div>
+    </div>
+
+
+
+    <div class="layer" id="layer4">
+        <button class="btn btn-success" onclick="goToHome()" style="text-align: left; display: none;">Go to Home</button>
+        <h2>Review Marked Answers</h2>
+        <div id="review-container"></div>
+        <button class="btn btn-primary" onclick="submitQuiz()">Submit Quiz</button>
+    </div>
+</div>
+
+
+<!-- Add this div for layer5 -->
+<div class="layer active" id="layer5">
+
+     
+
+  <button class="gate" onclick="navigate('layer3')" style="font-size:26px; text-align: left;"><span style='font-size:26px;'>&#9194;</span>Previous</button>
+
+   <button class="btn btn-info" onclick="checkScore()" style="font-size: 25px; text-align: right;"><b>Check Score</b><span style='font-size: 35px;'>&#127942;</span></button>
+
+  <button class="btn btn-success" onclick="goToHome()" style="text-align: left; display: none;">Go to Home</button>
+
+  
+<div class="layer5-content">
+            <div class="layer5">
+                <!-- Your dynamic content (questions and answers) goes here -->
+            </div>
+        </div>
+
+    <!-- Continue with your existing content -->   
+<div id="incorrect-answers-container" style="margin-top: 150px;">
+        <!-- Place all questions and answers below this line -->
+        <!-- ... (existing code) ... -->
+    </div>
+</div>
+
+<!-- Add a new layer for displaying bookmarked questions -->
+<div class="layer" id="layer6">
+    <button class="gate" onclick="navigate('layer5')" style="font-size: 26px; text-align: left;">
+        <span style='font-size: 26px;'>&#9194;</span> Previous
+    </button>
+    <h2>Bookmarked Questions</h2>
+    <div id="bookmarked-questions-container"></div>
+</div>
+
+<script>
+    function checkScore() {
+        const totalQuestions = topics[currentTopicIndex].questions.length;
+        const correctAnswers = userAnswers.filter((answer, index) => answer === topics[currentTopicIndex].questions[index].correctOption).length;
+        const incorrectAnswers = totalQuestions - correctAnswers;
+        const score = (correctAnswers / totalQuestions) * 100;
+
+        // Display a pop-up message with the score
+        const confirmation = window.confirm(`
+            Your Score: ${score.toFixed(2)}%
+            Correct Answers: ${correctAnswers}
+            Incorrect Answers: ${incorrectAnswers}
+            
+            Do you want to return to Questions and Answers?
+        `);
+
+        // If the user clicks "OK," return to Questions and Answers
+        if (confirmation) {
+            window.opener.goToHome();
+        }
+    }
+  
+
+ function goToHub() {
+        // Change 'https://example.com' to the actual URL you want to redirect to
+        window.location.href = 'Awareness/Awareness_1.html';
+    }
+
+  function goToWebsite() {
+        // Change 'https://example.com' to the actual URL you want to redirect to
+        window.location.href = 'index.html';
+    }
+
+ function goToEnglish() {
+        // Change 'https://example.com' to the actual URL you want to redirect to
+        window.location.href = 'English/English_1.html';
+    }
+
+  
+  function navigate(layerId) {
+        // Hide all layers
+        document.querySelectorAll('.layer').forEach(layer => {
+            layer.classList.remove('active');
+        });
+
+        // Show the selected layer
+        document.getElementById(layerId).classList.add('active');
+    }
+  
+  
+  function toggleLinks() {
+        var navbar = document.querySelector('.navbar');
+        navbar.classList.toggle('show-links');
+    }  
+</script>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script>
+    const topics = [
+        {
+            topic: "Delhi Constable GS/GK",
+            questions: [
+{
+    question: "Arakan and Shan are recognised ethnic groups of ________.",
+    options: [
+      "Nepal",
+      "Sri Lanka",
+      "Myanmar",
+      "Bhutan"
+    ],
+    correctOption: "Myanmar"
+  },
+  {
+    question: "The phenomenon of liquidity trap is based upon which of the following aspects of demand for money?",
+    options: [
+      "Velocity of circulation",
+      "Precautionary",
+      "Speculative",
+      "Transaction"
+    ],
+    correctOption: "Speculative"
+  },
+  {
+    question: "According to Census of India, 2011, which of the following is in the top three states with the highest population of age 0-6 years?",
+    options: [
+      "Madhya Pradesh",
+      "Maharashtra",
+      "Kerala",
+      "Assam"
+    ],
+    correctOption: "Maharashtra"
+  },
+  {
+    question: "At which Olympic Games did the Indian hockey men’s team win its last gold medal?",
+    options: [
+      "1996",
+      "2012",
+      "1980",
+      "2008"
+    ],
+    correctOption: "1980"
+  },
+  {
+    question: "The Ahaia Winter Festival is primarily organised by the North-Eastern state of ______ to promote tourism.",
+    options: [
+      "Meghalaya",
+      "Sikkim",
+      "Arunachal Pradesh",
+      "Tripura"
+    ],
+    correctOption: "Meghalaya"
+  },
+  {
+    question: "Who among the following Padma Bhushan awardee dancers was called to perform for the coronation festivities of Queen Elizabeth II?",
+    options: [
+      "Kumari Kamala",
+      "Alarmel Velli",
+      "Yamini Krishnamurthy",
+      "Birju Maharaj"
+    ],
+    correctOption: "Kumari Kamala"
+  },
+  {
+    question: "साके वा एक धार्मिक त्योहार है जो _________ के किरात खंबू राई समुदाय द्वारा मनाया जाता है।",
+    options: [
+      "पंजाब",
+      "सिक्किम",
+      "झारखंड",
+      "मध्य प्रदेश"
+    ],
+    correctOption: "सिक्किम"
+  },
+  {
+    question: "The scheme called Bringing Green Revolution to Eastern India is being implemented in how many eastern states?",
+    options: [
+      "Three",
+      "Seven",
+      "Four",
+      "Six"
+    ],
+    correctOption: "Seven"
+  },
+  {
+    question: "Sandeep Das is famous for playing which of the following percussion instruments?",
+    options: [
+      "Ghatam",
+      "Pakhawaj",
+      "Kanjira",
+      "Tabla"
+    ],
+    correctOption: "Tabla"
+  },
+  {
+    question: "Which of the following union territories recorded the highest sex ratio at birth in India in 2020 as per the annual report on vital statistics based on Civil Registration System Report?",
+    options: [
+      "Chandigarh",
+      "Jammu and Kashmir",
+      "Ladakh",
+      "Lakshadweep"
+    ],
+    correctOption: "Ladakh"
+  },
+  {
+    question: "Why did Mother Teresa establish the ‘Nirmal Hriday’ Hospice?",
+    options: [
+      "To provide a place where the terminally ill could die in peace",
+      "To provide a home for young widows",
+      "To provide a refuge for patients of leprosy",
+      "To provide a home for orphan girl-children"
+    ],
+    correctOption: "To provide a place where the terminally ill could die in peace"
+  },
+  {
+    question: "In which of the following States was the 37th National Junior Athletics Championship held?",
+    options: [
+      "Nagaland",
+      "Manipur",
+      "Mizoram",
+      "Assam"
+    ],
+    correctOption: "Assam"
+  },
+  {
+    question: "What is the sanctioned judge strength of the Supreme Court excluding Chief Justice of India as per the Supreme Court (Number of Judges) Amendment Act, 2019?",
+    options: [
+      "Twenty-One",
+      "Twenty-Eight",
+      "Ten",
+      "Thirty-Three"
+    ],
+    correctOption: "Thirty-Three"
+  },
+  {
+    question: "Freedom of Conscience provided in Article 25 of the Constitution of India is strengthened by which of the following two articles?",
+    options: [
+      "Article 27 and 29",
+      "Article 26 and 28",
+      "Article 27 and 28",
+      "Article 24 and 28"
+    ],
+    correctOption: "Article 27 and 28"
+  },
+  {
+    question: "Who among the following is known as the tabla maestro?",
+    options: [
+      "Ghulam Ali",
+      "Ustad Amjad Ali Khan",
+      "Ustad Bismillah Khan",
+      "Ustad Zakir Hussain"
+    ],
+    correctOption: "Ustad Zakir Hussain"
+  },
+  {
+    question: "Who among the following personalities is an award-winning Mohiniyattam Dancer?",
+    options: [
+      "Vasundhara Doraswamy",
+      "Meenakshi Chitharanjan",
+      "Sutapa Talukdar",
+      "Neena Prasad"
+    ],
+    correctOption: "Neena Prasad"
+  },
+  {
+    question: "Which Constitutional Amendment Act has replaced the collegium system of appointing judges to the Supreme Court and High Courts?",
+    options: [
+      "65th Amendment Act",
+      "52nd Amendment Act",
+      "99th Amendment Act",
+      "82nd Amendment Act"
+    ],
+    correctOption: "99th Amendment Act"
+  },
+  {
+    question: "Which Constitutional Amendment Act amended Article 38, enumerated under the Directive Principles of State Policy, and directed ‘State to minimise inequalities in income, status, facilities and opportunities’?",
+    options: [
+      "43",
+      "40",
+      "44",
+      "42"
+    ],
+    correctOption: "44"
+  },
+  {
+    question: "Norman Borlaug, known as the Father of Green Revolution for the world, belongs to which country?",
+    options: [
+      "US",
+      "New Zealand",
+      "Germany",
+      "Australia"
+    ],
+    correctOption: "US"
+  },
+  {
+    question: "The innermost sanctum of a Hindu temple where the idol of the main deity is placed is called:",
+    options: [
+      "Mandapa",
+      "Pradakshina path",
+      "Garbhagriha",
+      "Shikhara"
+    ],
+    correctOption: "Garbhagriha"
+  },
+              
+ {
+    question: "Which special symbol is commonly used by geologists to describe the orientation of rock beds, faults, fractures, cuestas, igneous dikes and sills?",
+    options: [
+      "Average directional index",
+      "Scale Indicator",
+      "Compass rose",
+      "Strike and dip"
+    ],
+    correctOption: "Strike and dip"
+  },
+  {
+    question: "Mughal officer Amil-Guzar primarily performed the task of ________.",
+    options: [
+      "gardening royal gardens",
+      "providing safety to royal family",
+      "recruiting soldiers",
+      "collecting land revenue"
+    ],
+    correctOption: "collecting land revenue"
+  },
+  {
+    question: "What are the most common type of earthquakes?",
+    options: [
+      "Tectonic earthquakes",
+      "Seismic earthquakes",
+      "Volcanic earthquakes",
+      "Reservoir earthquakes"
+    ],
+    correctOption: "Tectonic earthquakes"
+  },
+  {
+    question: "Narthaki Nataraj, awarded with Padma Shri in 2019 is an Indian _________ dancer.",
+    options: [
+      "Bharatanatyam",
+      "Kathak",
+      "Kathakali",
+      "Odissi"
+    ],
+    correctOption: "Bharatanatyam"
+  },
+  {
+    question: "Which of the following parts/structures is located at the topmost part of a Stupa?",
+    options: [
+      "Vedika",
+      "Medhi",
+      "Torana",
+      "Harmika"
+    ],
+    correctOption: "Harmika"
+  },
+  {
+    question: "‘Shaka’ is the Indian term used for the people called Scythians, who originally belonged to _________ .",
+    options: [
+      "eastern Asia",
+      "south-western Asia",
+      "south-eastern Asia",
+      "central Asia"
+    ],
+    correctOption: "central Asia"
+  },
+  {
+    question: "Which of the following countries hosts the first para Asiad?",
+    options: [
+      "China",
+      "Japan",
+      "India",
+      "South Korea"
+    ],
+    correctOption: "China"
+  },
+  {
+    question: "Shambhu Maharaj was conferred the Sangeet Natak Akademi Fellowship for which form of dance?",
+    options: [
+      "Manipuri",
+      "Bharatanatyam",
+      "Kathak",
+      "Kuchipudi"
+    ],
+    correctOption: "Kathak"
+  },
+              
+              {
+    question: "Which of the following stations receives the highest annual rainfall?",
+    options: [
+      "Nagpur",
+      "Chennai",
+      "Shillong",
+      "Jodhpur"
+    ],
+    correctOption: "Shillong"
+  },
+  {
+    question: "Siddi Dhamal is performed in which of the following states as a dance to celebrate successful hunting activity?",
+    options: [
+      "Haryana",
+      "Rajasthan",
+      "Gujarat",
+      "Punjab"
+    ],
+    correctOption: "Gujarat"
+  },
+  {
+    question: "National income at current prices is calculated based on _________",
+    options: [
+      "future prices",
+      "prevailing prices",
+      "comparative prices",
+      "constant prices"
+    ],
+    correctOption: "prevailing prices"
+  },
+  {
+    question: "Who among the following Bharatnatyam dancers received the prestigious Natya Kalanidhi award in 2021?",
+    options: [
+      "Pandit Birju Maharaj",
+      "Padma Subrahmanyam",
+      "Chitra Visweswaran",
+      "Guru Bipin Singh"
+    ],
+    correctOption: "Chitra Visweswaran"
+  },
+  {
+    question: "Who among the following was the Sultan of the Delhi Sultanate when the Bahmani Kingdom was established in South India?",
+    options: [
+      "Muhammad Bin Tughluq",
+      "Ghiyasuddin Tughluq",
+      "Nasir-ud-din Mohammed Tughluq",
+      "Firuz Shah Tughluq"
+    ],
+    correctOption: "Muhammad Bin Tughluq"
+  },
+  {
+    question: "The much-loved English novel, ‘Alice’s Adventures in Wonderland’ was written by which of the following authors?",
+    options: [
+      "Lewis Carroll",
+      "Herman Melville",
+      "Mary Shelly",
+      "Edgar Allan Poe"
+    ],
+    correctOption: "Lewis Carroll"
+  },
+  {
+    question: "Which Article of the Indian Constitution deals with the Governor’s assent to Bills?",
+    options: [
+      "Article 201",
+      "Article 264",
+      "Article 164",
+      "Article 200"
+    ],
+    correctOption: "Article 200"
+  },
+  {
+    question: "Anantha R Krishnan is a famous _________ player.",
+    options: [
+      "sitar",
+      "mridangam",
+      "flute",
+      "santoor"
+    ],
+    correctOption: "mridangam"
+  },
+  {
+    question: "Ibn Battuta’s book of travels, called Rihla was originally written in:",
+    options: [
+      "Urdu",
+      "Prakrit",
+      "Arabic",
+      "Persian"
+    ],
+    correctOption: "Arabic"
+  },
+  {
+    question: "Annie Besant was a Fabian socialist under the influence of _________ .",
+    options: [
+      "Arthur Miller",
+      "Charles Turner",
+      "Sigmund Freud",
+      "George Bernard Shaw"
+    ],
+    correctOption: "George Bernard Shaw"
+  },
+  {
+    question: "Which part of the food is defecated?",
+    options: [
+      "Nutrients in food",
+      "Glucose in food",
+      "Unused food",
+      "Vitamins in food"
+    ],
+    correctOption: "Unused food"
+  },
+  {
+    question: "Which of the following cultural festivals is organised by the Uttar Pradesh tourism department?",
+    options: [
+      "Natyanjali Utsav",
+      "Hampi Dance Utsav",
+      "Taj Mahotsav",
+      "Nishagandhi Festival"
+    ],
+    correctOption: "Taj Mahotsav"
+  },
+  {
+    question: "Which of the following pairs is INCORRECT?",
+    options: [
+      "Precious metal – Platinum",
+      "Non-ferrous metal – Zinc",
+      "Ferrous metal – Iron",
+      "Non-metal – Lead"
+    ],
+    correctOption: "Non-metal – Lead"
+  },
+  {
+    question: "According to the census of India 2011, which group of states and union territories from the following recorded the highest literacy rate?",
+    options: [
+      "Kerala and Puducherry",
+      "Kerala and Lakshadweep",
+      "Mizoram and Delhi",
+      "Goa and Lakshadweep"
+    ],
+    correctOption: "Kerala and Lakshadweep"
+  },
+  {
+    question: "The Pradhan Mantri Garib Kalyan Yojana (PMGKY) was launched in the year ________.",
+    options: [
+      "2015",
+      "2014",
+      "2016",
+      "2017"
+    ],
+    correctOption: "2016"
+  },
+  {
+    question: "National Waterways 10 (NW-10) is located in which state?",
+    options: [
+      "Tamil Nadu",
+      "Kerala",
+      "West Bengal",
+      "Maharashtra"
+    ],
+    correctOption: "Maharashtra"
+  },
+  {
+    question: "Which of the following is an RBI-registered NBFC- MFI that works on a Joint Liability Group lending model of Grameen?",
+    options: [
+      "ESAF Microfinance and Investments (P) Ltd",
+      "Fusion Microfinance Pvt Ltd",
+      "Asirvad Microfinance Limited",
+      "BSS Microfinance Limited"
+    ],
+    correctOption: "Fusion Microfinance Pvt Ltd"
+  },
+  {
+    question: "Which of the following options is/are correct about cropland ecosystem? Statement 1. Cropland is a man-made ecosystem. Statement 2. Very less genetic diversity is found in cropland ecosystem.",
+    options: [
+      "Only statement 1 correct",
+      "Both statements 1 and 2 correct",
+      "Only statement 2 correct",
+      "Both statements 1 and 2 incorrect"
+    ],
+    correctOption: "Both statements 1 and 2 correct"
+  },
+  {
+    question: "The Great Bath in Mohenjo-Daro was excavated in which of the following areas?",
+    options: [
+      "Residential complex",
+      "Lower town",
+      "Citadel",
+      "House courtyard"
+    ],
+    correctOption: "Citadel"
+  },
+  {
+    question: "Which of the following Articles of the Indian Constitution is related to the right to work, to education, and to public assistance in certain cases?",
+    options: [
+      "Article 43",
+      "Article 42",
+      "Article 41",
+      "Article 44"
+    ],
+    correctOption: "Article 41"
+  },
+              
+               {
+    question: "Identify the scheme that was launched by the Prime Minister on 8 April 2015 for providing loans upto ₹10 lakh to the noncorporate, non-farm small/micro enterprises?",
+    options: [
+      "Mahatma Gandhi National Rural Employment Guarantee Act",
+      "Bharat Rojgar Yojana",
+      "Pradhan Mantri Mudra Yojana",
+      "Pradhan Mantri Shram Yogi Maan-dhan"
+    ],
+    correctOption: "Pradhan Mantri Mudra Yojana"
+  },
+  {
+    question: "Which of the given monuments is NOT located in Karnataka?",
+    options: [
+      "Palakkad Fort",
+      "Kittur Fort",
+      "Gol Gumbaz",
+      "Hoysaleswara Temple"
+    ],
+    correctOption: "Palakkad Fort"
+  },
+  {
+    question: "Which of the following Indian Olympians has written the autobiography titled ‘Playing to Win’?",
+    options: [
+      "Lovlina Borgohain",
+      "Saina Nehwal",
+      "Abhinav Bindra",
+      "Karnam Malleswari"
+    ],
+    correctOption: "Saina Nehwal"
+  },
+  {
+    question: "Which of the following is an example of subsistence crop of Uttar Pradesh?",
+    options: [
+      "Wheat",
+      "Cotton",
+      "Jute",
+      "Sugarcane"
+    ],
+    correctOption: "Wheat"
+  },
+  {
+    question: "When is Maha Shivaratri celebrated according to the Drik Panchang?",
+    options: [
+      "Magha, Krishna Paksha, Chaturdashi",
+      "Phalguna, Shukla Paksha, Ekadashi",
+      "Chaitra, Shukla Paksha, Ekam",
+      "Ashadh, Krishna Paksha, Trayodashi"
+    ],
+    correctOption: "Magha, Krishna Paksha, Chaturdashi"
+  },
+  {
+    question: "Which country hosted the IBA Women’s World Boxing Championship-2023?",
+    options: [
+      "India",
+      "Pakistan",
+      "Bangladesh",
+      "Sri Lanka"
+    ],
+    correctOption: "India"
+  },
+  {
+    question: "Which of the following is an example of igneous rock?",
+    options: [
+      "Conglomerate",
+      "Chert",
+      "Breccia",
+      "Rhyolite"
+    ],
+    correctOption: "Rhyolite"
+  },
+  {
+    question: "Who won India’s first medal at the Tokyo Olympics 2021?",
+    options: [
+      "Lovlina Borgohain",
+      "Mirabai Chanu",
+      "Mary Kom",
+      "PV Sindhu"
+    ],
+    correctOption: "Mirabai Chanu"
+  },
+  {
+    question: "Who among the following was known for creating fusion arts by adapting European theatrical techniques to Indian Classical dance combined with Indian folk and tribal dance?",
+    options: [
+      "Uday Shankar",
+      "Bipin Singh",
+      "Kelucharan Mahopatra",
+      "Vempti Chinna Satyam"
+    ],
+    correctOption: "Uday Shankar"
+  },
+  {
+    question: "Ustad Allah Rakha, Sabir Khan, Pandit Kishan Maharaj and Pandit Jnan Prakash Ghosh are associated with which musical instrument?",
+    options: [
+      "Shehnai",
+      "Tabla",
+      "Violin",
+      "Mridangam"
+    ],
+    correctOption: "Tabla"
+  },
+  {
+    question: "Through which of the following Acts does the government check restrictive trade?",
+    options: [
+      "MRTP Act",
+      "Foreign Trade Policy",
+      "FEMA Act",
+      "Industrial Policy Act 1991"
+    ],
+    correctOption: "MRTP Act"
+  },
+  {
+    question: "Which Article of the Indian Constitution states that no citizen of India shall accept any title from any foreign State?",
+    options: [
+      "Article 18 (2)",
+      "Article 18 (3)",
+      "Article 18 (4)",
+      "Article 18 (1)"
+    ],
+    correctOption: "Article 18 (2)"
+  },
+  {
+    question: "Which of the following pairs regarding the judicial powers of the Indian President and their definition is INCORRECTLY matched?",
+    options: [
+      "Respite – It denotes awarding a lesser sentence in place of that which was originally awarded",
+      "Pardon – it removes both the sentences and the conviction",
+      "Commutation – It denotes the substitution of one form of punishment for a lighter form",
+      "Reprieve – It implies reducing the period of sentence without changing its character"
+    ],
+    correctOption: "It implies reducing the period of sentence without changing its character"
+  },
+  {
+    question: "Which of the following is NOT a noble gas?",
+    options: [
+      "Nitrogen (N)",
+      "Argon (Ar)",
+      "Helium (He)",
+      "Neon (Ne)"
+    ],
+    correctOption: "Nitrogen (N)"
+  },
+               {
+    question: "In which year did India adopt a dual exchange rate for the interim period?",
+    options: ["1992", "1994", "1996", "1990"],
+    correctOption: "1992"
+  },
+  {
+    question: "The Katakhal, Jiri, Chiri, Modhura, Longai, Sonai, Rukni and Singla are the main tributaries of which river?",
+    options: ["Damodar", "Ghaghra", "Chambal", "Barak"],
+    correctOption: "Barak"
+  },
+  {
+    question: "A novel based on the story of a family named ‘Fasting, Feasting’ was written by whom among the following?",
+    options: ["Arvind Adiga", "Anita Desai", "Kiran Desai", "Arundhati Roy"],
+    correctOption: "Anita Desai"
+  },
+  {
+    question: "The period between two FIFA Football World Cups is ________.",
+    options: ["5 years", "6 years", "4 years", "3 years"],
+    correctOption: "4 years"
+  },
+  {
+    question: "What is the slogan of the Pradhan Mantri Jan Dhan Yojana?",
+    options: ["Mera Khaata, Bhagya Vidhaata", "MeraAdhikar, MeraKhaata", "MeraKhaata, MeraAdhikar", "Mera Paisa, Mere Bank Me"],
+    correctOption: "Mera Khaata, Bhagya Vidhaata"
+  },
+  {
+    question: "The Begumpuri mosque was built during the reign of Sultan ___________.",
+    options: ["Qutbuddin Aybak", "Muhammad Bin Tughluq", "Jalaluddin Khalji", "Ghiyasuddin Balban"],
+    correctOption: "Muhammad Bin Tughluq"
+  },
+  {
+    question: "Which of the following ministries collaborated with NCERT on a joint mission for the NISHTHA capacity-building programme for Eklavya school teachers and principals?",
+    options: ["Ministry of Tribal Affairs", "Ministry of Minority Affairs", "Ministry of Education", "Ministry of Skill Development and Entrepreneurship"],
+    correctOption: "Ministry of Tribal Affairs"
+  },
+  {
+    question: "Ram Sahay Panday got Padma Shri for promoting the dance form “Raai” from Bundelkhand region. Which State does this dance form belong to?",
+    options: ["Madhya Pradesh", "Chhattisgarh", "Rajasthan", "Bihar"],
+    correctOption: "Madhya Pradesh"
+  },
+  {
+    question: "Which of the following dances of South India is known as peacock dance?",
+    options: ["Garadi", "Mayilattam", "Padayani", "Kummi"],
+    correctOption: "Mayilattam"
+  },
+  {
+    question: "R Muthukannammal was conferred the Padma Shri award in 2022. Which of the following is her contribution?",
+    options: [
+      "Being a custodian of the early dance form of Bharatnatyam",
+      "Specializing in the study of Indian society",
+      "Working with Orissa’s poor and backward communities",
+      "Playing a key role in powering India’s Blue Revolution"
+    ],
+    correctOption: "Being a custodian of the early dance form of Bharatnatyam"
+  },
+  {
+    question: "Autotrophs can fix ________.",
+    options: ["carbon monoxide", "carbon dioxides", "oxygen", "methane"],
+    correctOption: "carbon dioxides"
+  },
+  {
+    question: "In a volleyball game, ‘libero’ is a ________.",
+    options: [
+      "specialised attacking player",
+      "specialised defensive player",
+      "smashing expert",
+      "blocking expert"
+    ],
+    correctOption: "specialised defensive player"
+  },
+  {
+    question: "Which of the following statements are correct regarding festivals followed in Christianity? A. Easter is the day celebrated for the ‘Resurrection of Jesus Christ’. B. According to the Bible, ‘Three days after Jesus was crucified, he was resurrected’. C. Good Friday is to commemorate the day of crucifixion of Jesus Christ.",
+    options: ["B and C only", "A and B only", "A and C only", "A, B and C"],
+    correctOption: "A, B and C"
+  },
+  {
+    question: "Who among the following founded the Satnami Movement in central India for the betterment of leather workers?",
+    options: ["BR Ambedkar", "Swami Vivekananda", "Guru Ghasidas", "Mahatma Gandhi"],
+    correctOption: "Guru Ghasidas"
+  },
+  {
+    question: "How many temples and monasteries are there in Ellora caves?",
+    options: ["29", "23", "34", "18"],
+    correctOption: "34"
+  },
+  {
+    question: "Musician Bhajan Sopori was a Santoor maestro from the ______________ Gharana.",
+    options: ["Punjab", "Sufiana", "Benaras", "Maihar"],
+    correctOption: "Sufiana"
+  },
+  {
+    question: "Jhali is the folk dance of which Indian state?",
+    options: ["Bihar", "Uttar Pradesh", "Madhya Pradesh", "Himachal Pradesh"],
+    correctOption: "Himachal Pradesh"
+  },
+  {
+    question: "Kajli Teej is the cultural festival of which Indian state?",
+    options: ["Goa", "West Bengal", "Maharashtra", "Rajasthan"],
+    correctOption: "Rajasthan"
+  },
+  {
+    question: "Destruction, weathering, dissolving, rainfall, and lithification are the major geological processes that contribute to the formation of which of the following rocks?",
+    options: ["Metamorphic rocks", "Igneous rocks", "Sedimentary rocks", "Sub-metamorphic rocks"],
+    correctOption: "Sedimentary rocks"
+  },
+  {
+    question: "What is the molecular mass of an ozone molecule?",
+    options: ["18", "32", "16", "48"],
+    correctOption: "48"
+  },
+               {
+    question: "Which of the following is NOT a key player in the microfinance sector?",
+    options: ["Small finance banks", "Regional rural banks", "IDBI", "Commercial banks"],
+    correctOption: "IDBI"
+  },
+  {
+    question: "When was Singer and Nicolson's fluid mosaic model accepted as the foundational model for the interpretation of existing data on membrane proteins and lipids, and their dynamics?",
+    options: ["1952", "1942", "1972", "1982"],
+    correctOption: "1972"
+  },
+  {
+    question: "Which of the following statements is true with regard to preference given in most Five-Year Plans in India?",
+    options: [
+      "Investment in basic and heavy industries",
+      "Regulation of financial sector",
+      "Extensive Promotion of private sector entrepreneurship",
+      "Control of prices"
+    ],
+    correctOption: "Investment in basic and heavy industries"
+  },
+  {
+    question: "Any dispute between the Government of India and one or more States or between the Government of India and any State or States comes under ___________________ jurisdiction of the Supreme Court of India.",
+    options: ["Writ", "Exclusive Original", "Advisory", "Appellate"],
+    correctOption: "Exclusive Original"
+  },
+  {
+    question: "Pradhan Mantri Awas Yojana–Urban (PMAY-U) was launched in the year ________ by the Government of India.",
+    options: ["2017", "2019", "2021", "2015"],
+    correctOption: "2015"
+  },
+  {
+    question: "The Harappan city of Dholavira was divided into how many parts?",
+    options: ["4", "5", "3", "2"],
+    correctOption: "3"
+  },
+  {
+    question: "Who is the Head of the Secretariat of each house of the Parliament?",
+    options: ["President", "Secretary General", "Deputy Speaker", "Speaker"],
+    correctOption: "Secretary General"
+  },
+  {
+    question: "Who among the following was the first President of the Indian Olympic Association (IOA)?",
+    options: [
+      "Maharaja Bhupinder Singh",
+      "Dr. AG Noehren",
+      "Raja Bhalender Singh",
+      "Sir Dorabji Tata"
+    ],
+    correctOption: "Sir Dorabji Tata"
+  },
+  {
+    question: "National Investment Fund in India is a corpus fund that mobilises its financial receipts from ____________.",
+    options: [
+      "proceeds of profits of Central Public Sector Undertakings",
+      "proceeds from disinvestment of Central Public Sector Undertakings",
+      "savings of General Provident Fund",
+      "contributory pension scheme"
+    ],
+    correctOption: "proceeds from disinvestment of Central Public Sector Undertakings"
+  },
+  {
+    question: "Identify the crop which is grown in Rabi season in North India from the following.",
+    options: ["Cotton", "Gram", "Rice", "Bajra"],
+    correctOption: "Gram"
+  },
+  {
+    question: "When did India host the Asian Games for the first time?",
+    options: ["1990", "1951", "1962", "1954"],
+    correctOption: "1951"
+  },
+  {
+    question: "The Hindi novel ‘Indrajal’ is written by:",
+    options: [
+      "Harivansh Rai Bachchan",
+      "Jaishankar Prasad",
+      "Namvar Singh",
+      "Ramdhari Singh Dinkar"
+    ],
+    correctOption: "Jaishankar Prasad"
+  },
+  {
+    question: "Rafflesia arnoldii is famous because:",
+    options: [
+      "it has the thickest trunk",
+      "it is the tallest plant in the plant kingdom",
+      "it has the largest leaves in the plant kingdom",
+      "it has the largest flower in the plant kingdom"
+    ],
+    correctOption: "it has the largest flower in the plant kingdom"
+  },
+  {
+    question: "Ajita Srivastava is a famous folk singer from _________ and she received the Padma Shri in 2022.",
+    options: ["Maharashtra", "Gujarat", "Uttar Pradesh", "Madhya Pradesh"],
+    correctOption: "Uttar Pradesh"
+  }, 
+               {
+    question: "The National Sports Festival for Women was started in ____. 1. 1970 2. 1975 3. 1976 4. 1974",
+    options: ["1970", "1975", "1976", "1974"],
+    correctOption: "1975"
+  },
+  {
+    question: "Pandit Ayodhya Prasad is associated with _________. 1. pakhawaj 2. guitar 3. veena 4. flute",
+    options: ["pakhawaj", "guitar", "veena", "flute"],
+    correctOption: "pakhawaj"
+  },
+  {
+    question: "Ram Sahay Pandey, a Padma Shri 2022 awardee, is associated with which of the following dance forms of the Bedia community of Madhya Pradesh? 1. Ravala 2. Badhai 3. Karma 4. Rai",
+    options: ["Ravala", "Badhai", "Karma", "Rai"],
+    correctOption: "Rai"
+  },
+  {
+    question: "In the Lok Sabha, ________ seats are reserved for the members from Scheduled Castes. 1. 80 2. 73 3. 84 4. 82",
+    options: ["80", "73", "84", "82"],
+    correctOption: "84"
+  },
+  {
+    question: "Nage Waza’ is a ________ technique used in judo. 1. gripping 2. holding 3. throwing 4. choking",
+    options: ["gripping", "holding", "throwing", "choking"],
+    correctOption: "throwing"
+  },
+  {
+    question: "From which of the following countries did India adopt the ‘amendment procedure in the constitution’? 1. France 2. South Africa 3. The US 4. Ireland",
+    options: ["France", "South Africa", "The US", "Ireland"],
+    correctOption: "South Africa"
+  },
+  {
+    question: "Which of the following options had figured in the royal emblem of the Chola dynasty? 1. Horse 2. Tiger 3. Fish 4. Elephant",
+    options: ["Horse", "Tiger", "Fish", "Elephant"],
+    correctOption: "Tiger"
+  },
+  {
+    question: "In which of the following Indian states is Ghum Monastery located? 1. Himachal Pradesh 2. Arunachal Pradesh 3. West Bengal 4. Karnataka",
+    options: ["Himachal Pradesh", "Arunachal Pradesh", "West Bengal", "Karnataka"],
+    correctOption: "West Bengal"
+  },
+  {
+    question: "Below are some statements about the Ozone layer. Statement 1. It is found in the stratosphere. Statement 2. Chlorofluorocarbons (CFCs) are responsible for Ozone hole. Statement 3. Ozone layer is found around 15–30 km above the earth’s surface. Statement 4. Ozone layer is expected not to recover anymore now. Which of these statements are correct? 1. Only statements 1, 2 and 3 2. Only statements 1 and 2 3. Only statements 3 and 4 4. Only statements 2, 3 and 4",
+    options: [
+      "Only statements 1, 2 and 3",
+      "Only statements 1 and 2",
+      "Only statements 3 and 4",
+      "Only statements 2, 3 and 4"
+    ],
+    correctOption: "Only statements 1, 2 and 3"
+  },
+  {
+    question: "In which of the following dance genres is Mallika Sarabhai an accomplished dancer? 1. Odissi and Kuchipudi 2. Kuchipudi and Bharatnatyam 3. Bharatnatyam and Odissi 4. Kathakali and Odissi",
+    options: ["Odissi and Kuchipudi", "Kuchipudi and Bharatnatyam", "Bharatnatyam and Odissi", "Kathakali and Odissi"],
+    correctOption: "Kuchipudi and Bharatnatyam"
+  },
+  {
+    question: "The term 'monsoon' denotes the seasonal change in wind direction that occurs during which specific time period? 1. Year 2. Two decades 3. One day 4. Two months",
+    options: ["Year", "Two decades", "One day", "Two months"],
+    correctOption: "Year"
+  },
+  {
+    question: "Vijayadashami is also known as _______. 1. Ganesh Chaturthi 2. Dussehra 3. Holi 4. Diwali",
+    options: ["Ganesh Chaturthi", "Dussehra", "Holi", "Diwali"],
+    correctOption: "Dussehra"
+  },
+  {
+    question: "National Food Security Mission was launched in India in the year 2007-08 to increase the production of rice, wheat and ________. 1. saffron 2. pulses 3. fruits 4. millet",
+    options: ["saffron", "pulses", "fruits", "millet"],
+    correctOption: "pulses"
+  },
+  {
+    question: "The famous festival known as ‘Paro Tschechu’ is associated with which country? 1. Burma 2. Japan 3. Bhutan 4. Thailand",
+    options: ["Burma", "Japan", "Bhutan", "Thailand"],
+    correctOption: "Bhutan"
+  },
+  {
+    question: "Hojagiri is a famous dance form of which of these states? 1. Assam 2. Jharkhand 3. Tripura 4. Punjab",
+    options: ["Assam", "Jharkhand", "Tripura", "Punjab"],
+    correctOption: "Tripura"
+  },
+  {
+    question: "According to Census of India 2011, the growth rate of Hindu population in the decade 2001-2011 was ___________. 1. 16.8% 2. 10.0% 3. 20.1% 4. 8.6%",
+    options: ["16.8%", "10.0%", "20.1%", "8.6%"],
+    correctOption: "16.8%"
+  },
+  {
+    question: "Which of the following festivals is celebrated in honour of Hidimba Devi in Himachal Pradesh? 1. Bisua Festival 2. Doongri Festival 3. Maghi Festival 4. Shorai Festival",
+    options: ["Bisua Festival", "Doongri Festival", "Maghi Festival", "Shorai Festival"],
+    correctOption: "Doongri Festival"
+  },
+  {
+    question: "Which syndrome causes a fatty hump between the shoulders, a round face and pink or purple stretch marks on the skin? 1. Angelman syndrome 2. Cushing syndrome 3. Marfan syndrome 4. Down syndrome",
+    options: ["Angelman syndrome", "Cushing syndrome", "Marfan syndrome", "Down syndrome"],
+    correctOption: "Cushing syndrome"
+  },
+  {
+    question: "Which of the following was replaced by the Green Revolution? 1. Use of seeds supplied by the government 2. Use of inorganic manures 3. Use of organic manures 4. Use of groundwater for irrigation",
+    options: ["Use of seeds supplied by the government", "Use of inorganic manures", "Use of organic manures", "Use of groundwater for irrigation"],
+    correctOption: "Use of organic manures"
+  },
+  {
+    question: "Which of the following measures of credit control requires a well-developed money market? 1. Variable reserve ratio 2. Qualitative measures 3. Open market operations 4. Bank rate policy",
+    options: ["Variable reserve ratio", "Qualitative measures", "Open market operations", "Bank rate policy"],
+    correctOption: "Open market operations"
+  },
+  {
+    question: "Cashpor Micro credit is a company that does NOT operate in the most backward districts of ____________________. 1. Bihar 2. Jharkhand 3. Chhattisgarh 4. Telangana",
+    options: ["Bihar", "Jharkhand", "Chhattisgarh", "Telangana"],
+    correctOption: "Telangana"
+  },
+  {
+    question: "Which place in the north-eastern part of the northern Indian state of Himachal Pradesh is popularly known as the Cold Desert Mountains? 1. Aalo Valley 2. Parvati Valley 3. Sangti Valley 4. Spiti Valley",
+    options: ["Aalo Valley", "Parvati Valley", "Sangti Valley", "Spiti Valley"],
+    correctOption: "Spiti Valley"
+  },
+              
+              {
+    question: "What type of earthquake occurs when induced stresses around mine workings cause massive rocks to fly explosively from the mine face, creating seismic waves? 1. Collapse earthquake 2. Explosion earthquake 3. Tectonic earthquake 4. Volcanic earthquake",
+    options: ["Collapse earthquake", "Explosion earthquake", "Tectonic earthquake", "Volcanic earthquake"],
+    correctOption: "Collapse earthquake"
+  },
+  {
+    question: "Khandesh was incorporated into the Mughal empire in which of the following years? 1. 1601 2. 1598 3. 1603 4. 1600",
+    options: ["1601", "1598", "1603", "1600"],
+    correctOption: "1601"
+  },
+  {
+    question: "Select the personality who received the Sangeet Natak Akademi 2021 award for his/her contribution in Mohiniyattam. 1. Bijay Kumar Jena 2. Neena Prasad 3. Thokchom Ibemubi Devi 4. Bhuvan Kumar",
+    options: ["Bijay Kumar Jena", "Neena Prasad", "Thokchom Ibemubi Devi", "Bhuvan Kumar"],
+    correctOption: "Neena Prasad"
+  },
+  {
+    question: "‘Mein Kampf’ has been written by which of the following politicians? 1. Benito Mussolini 2. Hirohito 3. Adolf Hitler 4. Clement Attlee",
+    options: ["Benito Mussolini", "Hirohito", "Adolf Hitler", "Clement Attlee"],
+    correctOption: "Adolf Hitler"
+  },
+  {
+    question: "In which budget was the policy of LERMS announced? 1. 1991-92 2. 1990-91 3. 1995-96 4. 1992-93",
+    options: ["1991-92", "1990-91", "1995-96", "1992-93"],
+    correctOption: "1992-93"
+  },
+  {
+    question: "Who propounded the philosophy of ‘One Caste, One Religion, One God for all men’? 1. Shree Narayana Guru 2. Savitribai Phule 3. Raja Ram Mohan Roy 4. Mahatma Gandhi",
+    options: ["Shree Narayana Guru", "Savitribai Phule", "Raja Ram Mohan Roy", "Mahatma Gandhi"],
+    correctOption: "Shree Narayana Guru"
+  },
+  {
+    question: "According to Sangam texts, the term uzhavar means: 1. teachers 2. large landowners 3. ordinary ploughmen 4. slaves",
+    options: ["teachers", "large landowners", "ordinary ploughmen", "slaves"],
+    correctOption: "ordinary ploughmen"
+  },
+              
+      
+      
+
+                // Add more geography questions...
+            ]
+        },
+        {
+            topic: "Delhi Constable Computer",
+            questions: [
+                {
+    question: "Which of the following is NOT a layer of the Internet Protocol Suite (TCP/IP)?",
+    options: [
+      "Transport layer",
+      "Physical layer",
+      "Application layer",
+      "Network layer"
+    ],
+    correctOption: "Physical layer"
+  },
+  {
+    question: "In MS Excel 365, you are working on an Excel worksheet and need to select an entire row above the current row. Which keyboard shortcut combination should you use?",
+    options: [
+      "Alt + Spacebar",
+      "Ctrl + +",
+      "Shift + Spacebar",
+      "Ctrl + Spacebar"
+    ],
+    correctOption: "Shift + Spacebar"
+  },
+  {
+    question: "In MS Excel 365, when entering data into an MS Excel 365 spreadsheet, which data type is most suitable for a person's first name?",
+    options: [
+      "Text",
+      "Date",
+      "Currency",
+      "Number"
+    ],
+    correctOption: "Text"
+  },
+  {
+    question: "Which of the following shortcut keys is used in MS Excel 365 to make the cell in edit mode, allowing you to make changes?",
+    options: [
+      "Ctrl + F1",
+      "F1",
+      "F2",
+      "Ctrl + F2"
+    ],
+    correctOption: "F2"
+  },
+  {
+    question: "Which of the following is the foundation of data communication on the web, enabling the transfer of web page content?",
+    options: [
+      "Uniform Resource Locator",
+      "Hypertext Transfer Protocol",
+      "World Wide Web",
+      "Domain Name Server"
+    ],
+    correctOption: "Hypertext Transfer Protocol"
+  },
+  {
+    question: "How do we move the cursor to the beginning of a Microsoft Word 365 document?",
+    options: [
+      "By pressing ‘Ctrl + Home’",
+      "By pressing ‘Ctrl + PgDn’",
+      "By pressing ‘Ctrl + End’",
+      "By pressing ‘Ctrl + PgUp’"
+    ],
+    correctOption: "By pressing ‘Ctrl + Home’"
+  },
+  {
+    question: "In Microsoft Excel 365, which option should be selected if you want to save a workbook as a macro-enabled workbook with a different file name and location?",
+    options: [
+      "Save As",
+      "Save Excel",
+      "Save a Copy",
+      "Save Workspace"
+    ],
+    correctOption: "Save As"
+  },
+  {
+    question: "What are the icons below the menu bar in a word processing application called?",
+    options: [
+      "Toolbar icons",
+      "Format icons",
+      "Shortcut icons",
+      "Tool icons"
+    ],
+    correctOption: "Toolbar icons"
+  },
+  {
+    question: "Which of the following is used in MS Word 365 to change the case in a reverse way?",
+    options: [
+      "Alter case",
+      "Toggle case",
+      "Reverse case",
+      "Change case"
+    ],
+    correctOption: "Toggle case"
+  },
+  {
+    question: "In MS Excel 365, which of the following keyboard shortcut keys is used to insert a new row in MS-Excel 365?",
+    options: [
+      "Ctrl + shift + n",
+      "Ctrl + shift + + (plus key)",
+      "Ctrl + Alt + + (plus key)",
+      "Ctrl + Alt + n"
+    ],
+    correctOption: "Ctrl + shift + + (plus key)"
+  },
+                // Add more science questions...
+            ]
+        },
+	 {
+            topic: "SSC GD GA 2023",
+            questions: [
+                {
+                    question: "No Question Now",
+                    options: ["1No", "2no", "3No", "4no"],
+                    correctOption: "3No"
+                },
+               
+                // Add more science questions...
+            ]
+        },
+
+
+        // Add more topics...
+
+
+    ];
+
+   let currentTopicIndex = 0;
+    let currentQuestionIndex = 0;
+    let userAnswers = [];
+    let markedForReview = [];
+
+    function startQuiz() {
+        goToHome(); // Start with Layer 1
+    }
+    function goToHome() {
+        hideAllLayers();
+        document.getElementById("layer1").classList.add("active");
+    }
+
+ 
+    function goToTopics() {
+        hideAllLayers();
+        document.getElementById("layer2").classList.add("active");
+        displayTopics();
+console.log('Starting the quiz...');
+
+    }
+
+    function goToQuestions() {
+        hideAllLayers();
+        document.getElementById("layer3").classList.add("active");
+        displayQuestion();
+    }
+
+    function goToReview() {
+        hideAllLayers();
+        document.getElementById("layer4").classList.add("active");
+        displayReview();
+    }
+
+    function hideAllLayers() {
+        const layers = document.querySelectorAll('.layer');
+        layers.forEach(layer => layer.classList.remove('active'));
+    }
+
+    function displayTopics() {
+        const topicButtonsContainer = document.getElementById("topic-buttons");
+        topicButtonsContainer.innerHTML = "";
+
+        topics.forEach((topic, index) => {
+            const topicButton = document.createElement("button");
+            topicButton.textContent = topic.topic;
+            topicButton.classList.add("btn", "btn-primary");
+            topicButton.onclick = () => {
+                currentTopicIndex = index;
+                currentQuestionIndex = 0;
+                userAnswers = [];
+                markedForReview = [];
+                goToQuestions();
+            };
+            topicButtonsContainer.appendChild(topicButton);
+        });
+    }
+
+    function displayQuestion() {
+        const currentTopic = topics[currentTopicIndex];
+        const currentQuestion = currentTopic.questions[currentQuestionIndex];
+        const questionContainer = document.querySelector(".layer.active .question-container");
+        const optionsContainer = document.getElementById("options-container");
+        const resultContainer = document.getElementById("result-container");
+        const reviewButton = document.getElementById("review-button");
+
+        questionContainer.innerHTML = `<h3 style="text-align: left;">${currentTopic.topic} - Question ${currentQuestionIndex + 1}</h3>${currentQuestion.question}`;
+        optionsContainer.innerHTML = "";
+
+        currentQuestion.options.forEach((option, index) => {
+            const optionElement = document.createElement("div");
+            optionElement.classList.add("option");
+            optionElement.innerHTML = `
+                <input type="radio" name="option" value="${option}" id="option${index + 1}">
+                <label for="option${index + 1}">${option}</label>
+            `;
+            optionsContainer.appendChild(optionElement);
+        });
+
+        resultContainer.style.display = "none";
+        updateReviewButton();
+        displaySavedQuestion();
+
+// Inside the displayQuestion() function in the JavaScript code
+// Add a button to bookmark the current question
+// Inside the displayQuestion() function in the JavaScript code
+// Add a button to bookmark the current question
+const bookmarkButton = document.createElement("button");
+    bookmarkButton.textContent = getBookmarkedQuestions().includes(currentQuestionIndex) ? "Bookmarked" : "Bookmark";
+    bookmarkButton.id = "bookmark-button"; // Add id to the button
+    bookmarkButton.classList.add("btn", "btn-info", "mb-3"); // Add margin-bottom for spacing
+    bookmarkButton.onclick = () => {
+        bookmarkQuestion(currentQuestionIndex);
+    };
+    questionContainer.insertBefore(bookmarkButton, questionContainer.firstChild); // Insert before the question
+}
+
+// Add this function to handle bookmarking of questions
+function bookmarkQuestion(questionIndex) {
+    const bookmarkedQuestions = getBookmarkedQuestions();
+    const bookmarkButton = document.getElementById("bookmark-button");
+
+    if (!bookmarkedQuestions.includes(questionIndex)) {
+        bookmarkedQuestions.push(questionIndex);
+        setBookmarkedQuestions(bookmarkedQuestions);
+        bookmarkButton.textContent = "Bookmarked"; // Update button text to "Bookmarked"
+    } else {
+        const indexToRemove = bookmarkedQuestions.indexOf(questionIndex);
+        bookmarkedQuestions.splice(indexToRemove, 1);
+        setBookmarkedQuestions(bookmarkedQuestions);
+        bookmarkButton.textContent = "Bookmark"; // Update button text to "Bookmark"
+    }
+}
+
+
+// Add this function to retrieve the bookmarked questions from the cookie
+function getBookmarkedQuestions() {
+    const bookmarkedQuestionsString = getCookie("bookmarkedQuestions");
+    return bookmarkedQuestionsString ? JSON.parse(bookmarkedQuestionsString) : [];
+}
+
+// Add this function to set the bookmarked questions in the cookie
+function setBookmarkedQuestions(bookmarkedQuestions) {
+    setCookie("bookmarkedQuestions", JSON.stringify(bookmarkedQuestions));
+}
+
+// Add this function to get a cookie by name
+function getCookie(name) {
+    const cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.startsWith(name + '=')) {
+            return cookie.substring(name.length + 1);
+        }
+    }
+    return null;
+}
+
+// Add this function to set a cookie
+function setCookie(name, value) {
+    const expirationDate = new Date();
+    expirationDate.setFullYear(expirationDate.getFullYear() + 1); // Set expiration to one year from now
+    document.cookie = `${name}=${value}; expires=${expirationDate.toUTCString()}; path=/`;
+}
+
+  
+    function displayReview() {
+        const reviewContainer = document.getElementById("review-container");
+        reviewContainer.innerHTML = "Marked for Review: ";
+
+        markedForReview.forEach((index) => {
+            const reviewButton = document.createElement("button");
+            reviewButton.textContent = index + 1;
+            reviewButton.classList.add("btn", "btn-warning", "mr-2");
+            reviewButton.onclick = () => {
+                currentQuestionIndex = index;
+                displayQuestion();
+                hideAllLayers();
+                document.getElementById("layer3").classList.add("active");
+            };
+            reviewContainer.appendChild(reviewButton);
+        });
+    }
+
+    function markForReview() {
+        const currentQuestion = topics[currentTopicIndex].questions[currentQuestionIndex];
+        const markedIndex = markedForReview.indexOf(currentQuestionIndex);
+
+        if (markedIndex === -1) {
+            markedForReview.push(currentQuestionIndex);
+        } else {
+            markedForReview.splice(markedIndex, 1);
+        }
+
+        updateReviewButton();
+    }
+
+    function updateReviewButton() {
+        const reviewButton = document.getElementById("review-button");
+        const markedIndex = markedForReview.indexOf(currentQuestionIndex);
+
+        if (markedIndex === -1) {
+            reviewButton.textContent = "Mark for Review";
+            reviewButton.classList.remove("btn-warning");
+        } else {
+            reviewButton.textContent = "Unmark";
+            reviewButton.classList.add("btn-warning");
+        }
+    }
+
+    function goToPreviousQuestion() {
+        if (currentQuestionIndex > 0) {
+            currentQuestionIndex--;
+            displayQuestion();
+            updateReviewButton();
+            displaySavedQuestion();
+            resetOptionsHighlight(); // Reset options highlight when navigating to the previous question
+        }
+    }
+
+    function saveQuestion() {
+    const selectedOption = document.querySelector('input[name="option"]:checked');
+    const feedbackContainer = document.getElementById("result-container");
+
+    if (selectedOption) {
+        userAnswers[currentQuestionIndex] = selectedOption.value;
+        displayCorrectOption(); // Show correct option upon saving
+        feedbackContainer.innerHTML = '<p style="color: blue;">Answer saved!</p>';
+    } else {
+        feedbackContainer.innerHTML = '<p style="color: red;">Please select an option before saving.</p>';
+    }
+}
+
+
+function displayCorrectOption() {
+    const currentTopic = topics[currentTopicIndex];
+    const currentQuestion = currentTopic.questions[currentQuestionIndex];
+    const options = document.querySelectorAll('input[name="option"]');
+    const feedbackContainer = document.getElementById("result-container");
+
+    feedbackContainer.innerHTML = ''; // Clear previous feedback
+
+    options.forEach((option, index) => {
+        const optionContainer = option.parentElement;
+
+        if (option.value === currentQuestion.correctOption) {
+            optionContainer.style.backgroundColor = "lightgreen";
+            optionContainer.style.color = "white";
+            feedbackContainer.innerHTML = '<p style="color: green;">Correct!</p>';
+        } else {
+            optionContainer.style.backgroundColor = "";
+            optionContainer.style.color = "";
+        }
+    });
+}
+    function displaySavedQuestion() {
+        const savedAnswer = userAnswers[currentQuestionIndex];
+        if (savedAnswer) {
+            const options = document.querySelectorAll('input[name="option"]');
+            options.forEach(option => {
+                if (option.value === savedAnswer) {
+                    option.checked = true;
+                }
+            });
+        }
+    }
+
+    function goToNextQuestion() {
+        if (currentQuestionIndex < topics[currentTopicIndex].questions.length - 1) {
+            currentQuestionIndex++;
+            displayQuestion();
+            updateReviewButton();
+            displaySavedQuestion();
+            resetOptionsHighlight(); // Reset options highlight when navigating to the next question
+        }
+    }
+
+    function resetOptionsHighlight() {
+        const options = document.querySelectorAll('input[name="option"]');
+        options.forEach(option => {
+            option.parentElement.style.backgroundColor = "";
+            option.parentElement.style.color = "";
+        });
+    }
+
+function displayIncorrectAnswers() {
+    const incorrectAnswersContainer = document.getElementById("incorrect-answers-container");
+    incorrectAnswersContainer.innerHTML = "<h3>Incorrect Questions and Answers</h3>";
+
+    const correctCount = topics[currentTopicIndex].questions.length - markedForReview.length;
+    const incorrectCount = markedForReview.reduce((count, index) => {
+        const userAnswer = userAnswers[index];
+        const correctOption = topics[currentTopicIndex].questions[index].correctOption;
+        if (userAnswer && userAnswer !== correctOption) {
+            count++;
+        }
+        return count;
+    }, 0);
+
+    // Display evaluation in text
+    const evaluationText = document.createElement("p");
+    evaluationText.innerHTML = `You got ${correctCount} questions correct and ${incorrectCount} questions wrong.`;
+    incorrectAnswersContainer.appendChild(evaluationText);
+
+    // Create a canvas element for the chart
+    const chartCanvas = document.createElement("canvas");
+    chartCanvas.id = "chart";
+    incorrectAnswersContainer.appendChild(chartCanvas);
+
+    // Create a column chart
+    const ctx = chartCanvas.getContext("2d");
+    new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: ["Correct", "Wrong"],
+            datasets: [{
+                label: "Evaluation",
+                data: [correctCount, incorrectCount],
+                backgroundColor: ["green", "red"],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // Display incorrect questions below the chart
+    markedForReview.forEach((index) => {
+        const question = topics[currentTopicIndex].questions[index];
+        const userAnswer = userAnswers[index];
+        if (userAnswer && userAnswer !== question.correctOption) {
+            const incorrectQuestionDiv = document.createElement("div");
+            incorrectQuestionDiv.innerHTML = `
+                <p><strong>Question ${index + 1}:</strong> ${question.question}</p>
+                <p><strong>Your Answer:</strong> ${userAnswer}</p>
+                <p><strong>Correct Answer:</strong> ${question.correctOption}</p>
+                <hr>
+            `;
+            incorrectAnswersContainer.appendChild(incorrectQuestionDiv);
+        }
+    });
+}
+function submitTest() {
+    hideAllLayers();
+    document.getElementById("layer5").classList.add("active");
+
+    displayAllAnswers();
+}
+
+function displayAllAnswers() {
+    // Scroll to the top of the page
+    window.scrollTo(0, 0);
+
+    const incorrectAnswersContainer = document.getElementById("incorrect-answers-container");
+    incorrectAnswersContainer.innerHTML = "<h3>All Questions and Answers</h3>";
+
+    topics[currentTopicIndex].questions.forEach((question, index) => {
+        const userAnswer = userAnswers[index];
+        const markedIndex = markedForReview.indexOf(index);
+
+        const questionDiv = document.createElement("div");
+        questionDiv.innerHTML = `
+            <p><strong>Question ${index + 1}:</strong> ${question.question}</p>
+            <p><strong>Your Answer:</strong> ${userAnswer || 'Not answered'}</p>
+            <p><strong>Correct Answer:</strong> ${question.correctOption}</p>
+            ${markedIndex !== -1 ? '<p><strong>Marked for Review</strong></p>' : ''}
+            <hr>
+        `;
+        incorrectAnswersContainer.appendChild(questionDiv);
+    });
+
+    // Ensure the container is positioned at the top and centered horizontally
+    incorrectAnswersContainer.style.position = "absolute";
+    incorrectAnswersContainer.style.top = "0";
+    incorrectAnswersContainer.style.left = "50%";
+    incorrectAnswersContainer.style.transform = "translateX(-50%)";
+}
+
+
+function submitQuiz() {
+    console.log("Submitting quiz...");
+
+    // ... (existing code)
+
+    console.log("Quiz submitted successfully.");
+}
+
+function goToHome() {
+    console.log("Going to home...");
+
+    hideAllLayers();
+    document.getElementById("layer1").classList.add("active");
+
+    // Add a button to show the list of bookmarked questions
+    const showBookmarksButton = document.createElement("button");
+    showBookmarksButton.textContent = "Show Bookmarks";
+    showBookmarksButton.classList.add("btn", "btn-primary");
+    showBookmarksButton.onclick = () => {
+        showBookmarkedQuestions();
+    };
+    document.querySelector(".bookmarks").appendChild(showBookmarksButton);
+
+    console.log("Arrived at home.");
+}
+
+function showBookmarkedQuestions() {
+    const bookmarkedQuestions = getBookmarkedQuestions();
+    const bookmarkedQuestionsContainer = document.getElementById("bookmarked-questions-container");
+    bookmarkedQuestionsContainer.innerHTML = ""; // Clear previous content
+
+    if (bookmarkedQuestions.length > 0) {
+        bookmarkedQuestions.forEach((questionIndex) => {
+            const question = topics[currentTopicIndex].questions[questionIndex];
+            const questionDiv = document.createElement("div");
+            questionDiv.innerHTML = `
+                <p><strong>Question ${questionIndex + 1}:</strong> ${question.question}</p>
+                <div id="options-container-${questionIndex}"></div>
+                <button onclick="submitBookmarkedAnswer(${questionIndex})">Submit Answer</button>
+            `;
+            bookmarkedQuestionsContainer.appendChild(questionDiv);
+
+            // Display options for the question
+            const optionsContainer = document.getElementById(`options-container-${questionIndex}`);
+            question.options.forEach((option, index) => {
+                const optionElement = document.createElement("div");
+                optionElement.innerHTML = `
+                    <input type="radio" name="bookmarked-option-${questionIndex}" value="${option}" id="bookmarked-option-${questionIndex}-${index}">
+                    <label for="bookmarked-option-${questionIndex}-${index}">${option}</label>
+                `;
+                optionsContainer.appendChild(optionElement);
+            });
+        });
+    } else {
+        bookmarkedQuestionsContainer.textContent = "No questions bookmarked yet.";
+    }
+
+    // Hide all layers and show Layer 6
+    hideAllLayers();
+    document.getElementById("layer6").classList.add("active");
+}
+
+function submitBookmarkedAnswer(questionIndex) {
+    const selectedOption = document.querySelector(`input[name="bookmarked-option-${questionIndex}"]:checked`);
+    if (selectedOption) {
+        const answer = selectedOption.value;
+        const question = topics[currentTopicIndex].questions[questionIndex];
+        const correctOptionIndex = question.options.indexOf(question.correctOption);
+
+        // Highlight the selected option
+        selectedOption.parentElement.style.backgroundColor = answer === question.correctOption ? "lightgreen" : "pink";
+
+        // Highlight the correct option
+        const correctOptionElement = document.getElementById(`bookmarked-option-${questionIndex}-${correctOptionIndex}`);
+        correctOptionElement.parentElement.style.backgroundColor = "lightgreen";
+
+        // Handle the submitted answer (e.g., store it, check correctness, etc.)
+        console.log(`Submitted answer for Question ${questionIndex + 1}: ${answer}`);
+    } else {
+        console.log(`No answer selected for Question ${questionIndex + 1}`);
+    }
+}  
+function jumpToQuestion() {
+        const jumpInput = document.getElementById("jumpToQuestion");
+        const targetQuestion = parseInt(jumpInput.value, 10);
+        if (!isNaN(targetQuestion) && targetQuestion >= 1 && targetQuestion <= topics[currentTopicIndex].questions.length) {
+            currentQuestionIndex = targetQuestion - 1; // Adjust index to 0-based
+            displayQuestion();
+            updateReviewButton();
+            displaySavedQuestion();
+            resetOptionsHighlight();
+        } else {
+            alert("Please enter a valid question number.");
+        }
+    }
+
+
+
+
+
+function resetQuestionContainer() {
+    questionContainer.classList.remove('current-question');
+    setTimeout(() => {
+      questionContainer.classList.add('current-question');
+    }, 10); // Small delay to ensure smooth transition
+  }
+
+document.addEventListener('keydown', function(event) {
+  switch (event.key) {
+    case 'ArrowLeft':
+      goToPreviousQuestion();
+      break;
+    case 'ArrowRight':
+      goToNextQuestion();
+      break;
+    case 'ArrowUp':
+      saveQuestion();
+      break;
+    case '1':
+    case '2':
+    case '3':
+    case '4':
+      // Convert the key to an index (0-based)
+      const index = parseInt(event.key) - 1;
+      const radios = document.getElementsByName('option');
+      if (index >= 0 && index < radios.length) {
+        radios[index].checked = true;
+      }
+      break;
+    default:
+      break;
+  }
+});
+
+
+
+	let touchStartX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
+let isSwipe = false;
+
+document.addEventListener('touchstart', function(event) {
+  touchStartX = event.touches[0].clientX;
+  touchStartY = event.touches[0].clientY;
+  isSwipe = false; // Reset the flag for each touchstart
+});
+
+document.addEventListener('touchmove', function(event) {
+  touchEndX = event.touches[0].clientX;
+  touchEndY = event.touches[0].clientY;
+
+  // Calculate the distance moved in the X and Y directions
+  const deltaX = touchEndX - touchStartX;
+  const deltaY = touchEndY - touchStartY;
+
+  // If the distance moved in the X direction is greater than the threshold, consider it a swipe
+  if (Math.abs(deltaX) > 10) {
+    isSwipe = true;
+  }
+});
+
+document.addEventListener('touchend', function(event) {
+  if (isSwipe) {
+    const deltaX = touchEndX - touchStartX;
+    const deltaY = touchEndY - touchStartY;
+
+    const touchSensitivity = 50; // Adjust as needed
+
+    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > touchSensitivity) {
+      if (deltaX > 0) {
+        // Swipe right (previous question)
+        goToPreviousQuestion();
+      } else {
+        // Swipe left (next question)
+        goToNextQuestion();
+      }
+    } else if (Math.abs(deltaY) > touchSensitivity) {
+      if (deltaY < 0) {
+        // Swipe up (open answer)
+        saveQuestion();
+      }
+    }
+  }
+});
+
+
+
+	
+
+    // Start the quiz
+    startQuiz();
+</script>
+</body>
+</html>
