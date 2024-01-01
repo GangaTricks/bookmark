@@ -1913,7 +1913,10 @@ function goToHome() {
     console.log("Arrived at home.");
 }
 
-function showBookmarkedQuestions() {
+// Your existing code ...
+
+// Add this function to show bookmarked questions
+function showBookmarks() {
     const bookmarkedQuestions = getBookmarkedQuestions();
     const bookmarkedQuestionsContainer = document.getElementById("bookmarked-questions-container");
     bookmarkedQuestionsContainer.innerHTML = "";
@@ -1948,6 +1951,9 @@ function showBookmarkedQuestions() {
     hideAllLayers();
     document.getElementById("layer6").classList.add("active");
 }
+
+// Your existing code ...
+
 
 function submitBookmarkedAnswer(topicIndex, questionIndex) {
     const selectedOption = document.querySelector(`input[name="bookmarked-option-${questionIndex}"]:checked`);
