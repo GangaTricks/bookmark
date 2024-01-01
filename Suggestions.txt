@@ -1,66 +1,80 @@
-It seems like you are implementing a bookmarking functionality for questions in an HTML page using JavaScript. However, I don't see the part where you're associating the bookmarked questions with specific topics. To address the issue of questions appearing in different topics when switching, you need to ensure that the bookmarked questions are associated with the correct topic.
+// Add this function to get a unique identifier for each bookmarked question
+function getBookmarkKey(topicIndex, questionIndex) {
+    return `${topicIndex}-${questionIndex}`;
+}
 
-Here's a suggestion on how you can modify your code:
+// Modify the bookmarkQuestion function to include the topic index
+function bookmarkQuestion(topicIndex, questionIndex) {
+    const bookmarkedQuestions = getBookmarkedQuestions();
+    const bookmarkKey = getBookmarkKey(topicIndex, questionIndex);
+    const bookmarkButton = document.getElementById("bookmark-button");
 
-1. **Update the Bookmark Button Creation:**
-   Modify the creation of the bookmark button to include the current topic index. This ensures that each question is associated with its respective topic.
+    if (!bookmarkedQuestions.includes(bookmarkKey)) {
+        bookmarkedQuestions.push(bookmarkKey);
+        setBookmarkedQuestions(bookmarkedQuestions);
+        bookmarkButton.textContent = "Bookmarked";
+    } else {
+        const indexToRemove = bookmarkedQuestions.indexOf(bookmarkKey);
+        bookmarkedQuestions.splice(indexToRemove, 1);
+        setBookmarkedQuestions(bookmarkedQuestions);
+        bookmarkButton.textContent = "Bookmark";
+    }
+}
 
-   ```javascript
-   const bookmarkButton = document.createElement("button");
-   bookmarkButton.textContent = getBookmarkedQuestions(currentTopicIndex).includes(currentQuestionIndex) ? "Bookmarked" : "Bookmark";
-   bookmarkButton.id = "bookmark-button";
-   bookmarkButton.classList.add("btn", "btn-info", "mb-3");
-   bookmarkButton.onclick = () => {
-       bookmarkQuestion(currentTopicIndex, currentQuestionIndex);
-   };
-   questionContainer.insertBefore(bookmarkButton, questionContainer.firstChild);
-   ```
+// Modify the showBookmarkedQuestions function to extract topic and question index
+function showBookmarkedQuestions() {
+    const bookmarkedQuestions = getBookmarkedQuestions();
+    const bookmarkedQuestionsContainer = document.getElementById("bookmarked-questions-container");
+    bookmarkedQuestionsContainer.innerHTML = "";
 
-2. **Update the Bookmark Question Function:**
-   Modify the bookmarkQuestion function to handle the association of the topic index with the question index.
+    if (bookmarkedQuestions.length > 0) {
+        bookmarkedQuestions.forEach((bookmarkKey) => {
+            const [topicIndex, questionIndex] = bookmarkKey.split('-').map(Number);
+            const question = topics[topicIndex].questions[questionIndex];
+            const questionDiv = document.createElement("div");
+            questionDiv.innerHTML = `
+                <p><strong>${topics[topicIndex].topic} - Question ${questionIndex + 1}:</strong> ${question.question}</p>
+                <div id="options-container-${questionIndex}"></div>
+                <button onclick="submitBookmarkedAnswer(${topicIndex}, ${questionIndex})">Submit Answer</button>
+            `;
+            bookmarkedQuestionsContainer.appendChild(questionDiv);
 
-   ```javascript
-   function bookmarkQuestion(topicIndex, questionIndex) {
-       const bookmarkedQuestions = getBookmarkedQuestions(topicIndex);
-       const bookmarkButton = document.getElementById("bookmark-button");
+            // Display options for the question
+            const optionsContainer = document.getElementById(`options-container-${questionIndex}`);
+            question.options.forEach((option, index) => {
+                const optionElement = document.createElement("div");
+                optionElement.innerHTML = `
+                    <input type="radio" name="bookmarked-option-${questionIndex}" value="${option}" id="bookmarked-option-${questionIndex}-${index}">
+                    <label for="bookmarked-option-${questionIndex}-${index}">${option}</label>
+                `;
+                optionsContainer.appendChild(optionElement);
+            });
+        });
+    } else {
+        bookmarkedQuestionsContainer.textContent = "No questions bookmarked yet.";
+    }
 
-       const questionIdentifier = `${topicIndex}-${questionIndex}`;
+    hideAllLayers();
+    document.getElementById("layer6").classList.add("active");
+}
 
-       if (!bookmarkedQuestions.includes(questionIdentifier)) {
-           bookmarkedQuestions.push(questionIdentifier);
-           setBookmarkedQuestions(topicIndex, bookmarkedQuestions);
-           bookmarkButton.textContent = "Bookmarked";
-       } else {
-           const indexToRemove = bookmarkedQuestions.indexOf(questionIdentifier);
-           bookmarkedQuestions.splice(indexToRemove, 1);
-           setBookmarkedQuestions(topicIndex, bookmarkedQuestions);
-           bookmarkButton.textContent = "Bookmark";
-       }
-   }
-   ```
+// Modify the submitBookmarkedAnswer function to include topic index
+function submitBookmarkedAnswer(topicIndex, questionIndex) {
+    const selectedOption = document.querySelector(`input[name="bookmarked-option-${questionIndex}"]:checked`);
+    if (selectedOption) {
+        const answer = selectedOption.value;
+        const question = topics[topicIndex].questions[questionIndex];
+        const correctOptionIndex = question.options.indexOf(question.correctOption);
 
-3. **Update the Get and Set Bookmark Functions:**
-   Modify the getBookmarkedQuestions and setBookmarkedQuestions functions to handle topic-specific bookmarked questions.
+        // Highlight the selected option
+        selectedOption.parentElement.style.backgroundColor = answer === question.correctOption ? "lightgreen" : "pink";
 
-   ```javascript
-   function getBookmarkedQuestions(topicIndex) {
-       const bookmarkedQuestionsString = getCookie(`bookmarkedQuestions-${topicIndex}`);
-       return bookmarkedQuestionsString ? JSON.parse(bookmarkedQuestionsString) : [];
-   }
+        // Highlight the correct option
+        const correctOptionElement = document.getElementById(`bookmarked-option-${questionIndex}-${correctOptionIndex}`);
+        correctOptionElement.parentElement.style.backgroundColor = "lightgreen";
 
-   function setBookmarkedQuestions(topicIndex, bookmarkedQuestions) {
-       setCookie(`bookmarkedQuestions-${topicIndex}`, JSON.stringify(bookmarkedQuestions));
-   }
-   ```
-
-4. **Update the Show Bookmarks Function:**
-   Update the showBookmarkedQuestions function to pass the current topic index when retrieving bookmarked questions.
-
-   ```javascript
-   function showBookmarkedQuestions() {
-       const bookmarkedQuestions = getBookmarkedQuestions(currentTopicIndex);
-       // ... (rest of the function remains the same)
-   }
-   ```
-
-This modification ensures that each bookmarked question is associated with its corresponding topic. You may need to adapt other parts of your code accordingly.
+        console.log(`Submitted answer for ${topics[topicIndex].topic} - Question ${questionIndex + 1}: ${answer}`);
+    } else {
+        console.log(`No answer selected for ${topics[topicIndex].topic} - Question ${questionIndex + 1}`);
+    }
+}
