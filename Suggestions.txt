@@ -1,0 +1,66 @@
+It seems like you are implementing a bookmarking functionality for questions in an HTML page using JavaScript. However, I don't see the part where you're associating the bookmarked questions with specific topics. To address the issue of questions appearing in different topics when switching, you need to ensure that the bookmarked questions are associated with the correct topic.
+
+Here's a suggestion on how you can modify your code:
+
+1. **Update the Bookmark Button Creation:**
+   Modify the creation of the bookmark button to include the current topic index. This ensures that each question is associated with its respective topic.
+
+   ```javascript
+   const bookmarkButton = document.createElement("button");
+   bookmarkButton.textContent = getBookmarkedQuestions(currentTopicIndex).includes(currentQuestionIndex) ? "Bookmarked" : "Bookmark";
+   bookmarkButton.id = "bookmark-button";
+   bookmarkButton.classList.add("btn", "btn-info", "mb-3");
+   bookmarkButton.onclick = () => {
+       bookmarkQuestion(currentTopicIndex, currentQuestionIndex);
+   };
+   questionContainer.insertBefore(bookmarkButton, questionContainer.firstChild);
+   ```
+
+2. **Update the Bookmark Question Function:**
+   Modify the bookmarkQuestion function to handle the association of the topic index with the question index.
+
+   ```javascript
+   function bookmarkQuestion(topicIndex, questionIndex) {
+       const bookmarkedQuestions = getBookmarkedQuestions(topicIndex);
+       const bookmarkButton = document.getElementById("bookmark-button");
+
+       const questionIdentifier = `${topicIndex}-${questionIndex}`;
+
+       if (!bookmarkedQuestions.includes(questionIdentifier)) {
+           bookmarkedQuestions.push(questionIdentifier);
+           setBookmarkedQuestions(topicIndex, bookmarkedQuestions);
+           bookmarkButton.textContent = "Bookmarked";
+       } else {
+           const indexToRemove = bookmarkedQuestions.indexOf(questionIdentifier);
+           bookmarkedQuestions.splice(indexToRemove, 1);
+           setBookmarkedQuestions(topicIndex, bookmarkedQuestions);
+           bookmarkButton.textContent = "Bookmark";
+       }
+   }
+   ```
+
+3. **Update the Get and Set Bookmark Functions:**
+   Modify the getBookmarkedQuestions and setBookmarkedQuestions functions to handle topic-specific bookmarked questions.
+
+   ```javascript
+   function getBookmarkedQuestions(topicIndex) {
+       const bookmarkedQuestionsString = getCookie(`bookmarkedQuestions-${topicIndex}`);
+       return bookmarkedQuestionsString ? JSON.parse(bookmarkedQuestionsString) : [];
+   }
+
+   function setBookmarkedQuestions(topicIndex, bookmarkedQuestions) {
+       setCookie(`bookmarkedQuestions-${topicIndex}`, JSON.stringify(bookmarkedQuestions));
+   }
+   ```
+
+4. **Update the Show Bookmarks Function:**
+   Update the showBookmarkedQuestions function to pass the current topic index when retrieving bookmarked questions.
+
+   ```javascript
+   function showBookmarkedQuestions() {
+       const bookmarkedQuestions = getBookmarkedQuestions(currentTopicIndex);
+       // ... (rest of the function remains the same)
+   }
+   ```
+
+This modification ensures that each bookmarked question is associated with its corresponding topic. You may need to adapt other parts of your code accordingly.
