@@ -1574,77 +1574,72 @@ console.log('Starting the quiz...');
     }
 
     function displayQuestion() {
-    const currentTopic = topics[currentTopicIndex];
-    const currentQuestion = currentTopic.questions[currentQuestionIndex];
-    const questionContainer = document.querySelector(".layer.active .question-container");
-    const optionsContainer = document.getElementById("options-container");
-    const resultContainer = document.getElementById("result-container");
-    const reviewButton = document.getElementById("review-button");
+        const currentTopic = topics[currentTopicIndex];
+        const currentQuestion = currentTopic.questions[currentQuestionIndex];
+        const questionContainer = document.querySelector(".layer.active .question-container");
+        const optionsContainer = document.getElementById("options-container");
+        const resultContainer = document.getElementById("result-container");
+        const reviewButton = document.getElementById("review-button");
 
-    // Display question and options
-    questionContainer.innerHTML = `<h3 style="text-align: left;">${currentTopic.topic} - Question ${currentQuestionIndex + 1}</h3>${currentQuestion.question}`;
-    optionsContainer.innerHTML = "";
-    
-    currentQuestion.options.forEach((option, index) => {
-        const optionElement = document.createElement("div");
-        optionElement.classList.add("option");
-        optionElement.innerHTML = `
-            <input type="radio" name="option" value="${option}" id="option${index + 1}">
-            <label for="option${index + 1}">${option}</label>
-        `;
-        optionsContainer.appendChild(optionElement);
-    });
+        questionContainer.innerHTML = `<h3 style="text-align: left;">${currentTopic.topic} - Question ${currentQuestionIndex + 1}</h3>${currentQuestion.question}`;
+        optionsContainer.innerHTML = "";
 
-    // Display result containers and update review button
-    resultContainer.style.display = "none";
-    updateReviewButton();
-    displaySavedQuestion();
+        currentQuestion.options.forEach((option, index) => {
+            const optionElement = document.createElement("div");
+            optionElement.classList.add("option");
+            optionElement.innerHTML = `
+                <input type="radio" name="option" value="${option}" id="option${index + 1}">
+                <label for="option${index + 1}">${option}</label>
+            `;
+            optionsContainer.appendChild(optionElement);
+        });
 
-    // Add a button to bookmark the current question
-    const bookmarkButton = document.createElement("button");
-    bookmarkButton.textContent = getBookmarkedQuestions(currentTopicIndex).includes(currentQuestionIndex) ? "Bookmarked" : "Bookmark";
-    bookmarkButton.id = "bookmark-button";
-    bookmarkButton.classList.add("btn", "btn-info", "mb-3");
+        resultContainer.style.display = "none";
+        updateReviewButton();
+        displaySavedQuestion();
+
+// Inside the displayQuestion() function in the JavaScript code
+// Add a button to bookmark the current question
+// Inside the displayQuestion() function in the JavaScript code
+// Add a button to bookmark the current question
+const bookmarkButton = document.createElement("button");
+    bookmarkButton.textContent = getBookmarkedQuestions().includes(currentQuestionIndex) ? "Bookmarked" : "Bookmark";
+    bookmarkButton.id = "bookmark-button"; // Add id to the button
+    bookmarkButton.classList.add("btn", "btn-info", "mb-3"); // Add margin-bottom for spacing
     bookmarkButton.onclick = () => {
-        bookmarkQuestion(currentTopicIndex, currentQuestionIndex);
-        // Update the bookmark button text after clicking
-        bookmarkButton.textContent = getBookmarkedQuestions(currentTopicIndex).includes(currentQuestionIndex) ? "Bookmarked" : "Bookmark";
+        bookmarkQuestion(currentQuestionIndex);
     };
-    
-    // Insert the bookmark button before the question
-    questionContainer.insertBefore(bookmarkButton, questionContainer.firstChild);
+    questionContainer.insertBefore(bookmarkButton, questionContainer.firstChild); // Insert before the question
+}
+
+// Add this function to handle bookmarking of questions
+function bookmarkQuestion(questionIndex) {
+    const bookmarkedQuestions = getBookmarkedQuestions();
+    const bookmarkButton = document.getElementById("bookmark-button");
+
+    if (!bookmarkedQuestions.includes(questionIndex)) {
+        bookmarkedQuestions.push(questionIndex);
+        setBookmarkedQuestions(bookmarkedQuestions);
+        bookmarkButton.textContent = "Bookmarked"; // Update button text to "Bookmarked"
+    } else {
+        const indexToRemove = bookmarkedQuestions.indexOf(questionIndex);
+        bookmarkedQuestions.splice(indexToRemove, 1);
+        setBookmarkedQuestions(bookmarkedQuestions);
+        bookmarkButton.textContent = "Bookmark"; // Update button text to "Bookmark"
+    }
 }
 
 
-// Add this function to handle bookmarking of questions
- function bookmarkQuestion(topicIndex, questionIndex) {
-       const bookmarkedQuestions = getBookmarkedQuestions(topicIndex);
-       const bookmarkButton = document.getElementById("bookmark-button");
-
-       const questionIdentifier = `${topicIndex}-${questionIndex}`;
-
-       if (!bookmarkedQuestions.includes(questionIdentifier)) {
-           bookmarkedQuestions.push(questionIdentifier);
-           setBookmarkedQuestions(topicIndex, bookmarkedQuestions);
-           bookmarkButton.textContent = "Bookmarked";
-       } else {
-           const indexToRemove = bookmarkedQuestions.indexOf(questionIdentifier);
-           bookmarkedQuestions.splice(indexToRemove, 1);
-           setBookmarkedQuestions(topicIndex, bookmarkedQuestions);
-           bookmarkButton.textContent = "Bookmark";
-       }
-   }
-
-
 // Add this function to retrieve the bookmarked questions from the cookie
- function getBookmarkedQuestions(topicIndex) {
-       const bookmarkedQuestionsString = getCookie(`bookmarkedQuestions-${topicIndex}`);
-       return bookmarkedQuestionsString ? JSON.parse(bookmarkedQuestionsString) : [];
-   }
+function getBookmarkedQuestions() {
+    const bookmarkedQuestionsString = getCookie("bookmarkedQuestions");
+    return bookmarkedQuestionsString ? JSON.parse(bookmarkedQuestionsString) : [];
+}
 
-   function setBookmarkedQuestions(topicIndex, bookmarkedQuestions) {
-       setCookie(`bookmarkedQuestions-${topicIndex}`, JSON.stringify(bookmarkedQuestions));
-   }
+// Add this function to set the bookmarked questions in the cookie
+function setBookmarkedQuestions(bookmarkedQuestions) {
+    setCookie("bookmarkedQuestions", JSON.stringify(bookmarkedQuestions));
+}
 
 // Add this function to get a cookie by name
 function getCookie(name) {
@@ -1909,8 +1904,9 @@ function goToHome() {
 
     console.log("Arrived at home.");
 }
- function showBookmarkedQuestions() {
-       const bookmarkedQuestions = getBookmarkedQuestions(currentTopicIndex);
+
+function showBookmarkedQuestions() {
+    const bookmarkedQuestions = getBookmarkedQuestions();
     const bookmarkedQuestionsContainer = document.getElementById("bookmarked-questions-container");
     bookmarkedQuestionsContainer.innerHTML = ""; // Clear previous content
 
