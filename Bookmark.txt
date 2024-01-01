@@ -11,6 +11,49 @@
 
 
 
+   function displayTopics() {
+        const topicButtonsContainer = document.getElementById("topic-buttons");
+        topicButtonsContainer.innerHTML = "";
+
+        topics.forEach((topic, index) => {
+            const topicButton = document.createElement("button");
+            topicButton.textContent = topic.topic;
+            topicButton.classList.add("btn", "btn-primary");
+            topicButton.onclick = () => {
+                currentTopicIndex = index;
+                currentQuestionIndex = 0;
+                userAnswers = [];
+                markedForReview = [];
+                goToQuestions();
+            };
+            topicButtonsContainer.appendChild(topicButton);
+        });
+    }
+
+    function displayQuestion() {
+        const currentTopic = topics[currentTopicIndex];
+        const currentQuestion = currentTopic.questions[currentQuestionIndex];
+        const questionContainer = document.querySelector(".layer.active .question-container");
+        const optionsContainer = document.getElementById("options-container");
+        const resultContainer = document.getElementById("result-container");
+        const reviewButton = document.getElementById("review-button");
+
+        questionContainer.innerHTML = `<h3 style="text-align: left;">${currentTopic.topic} - Question ${currentQuestionIndex + 1}</h3>${currentQuestion.question}`;
+        optionsContainer.innerHTML = "";
+
+        currentQuestion.options.forEach((option, index) => {
+            const optionElement = document.createElement("div");
+            optionElement.classList.add("option");
+            optionElement.innerHTML = `
+                <input type="radio" name="option" value="${option}" id="option${index + 1}">
+                <label for="option${index + 1}">${option}</label>
+            `;
+            optionsContainer.appendChild(optionElement);
+        });
+
+        resultContainer.style.display = "none";
+        updateReviewButton();
+        displaySavedQuestion();
 
 // Inside the displayQuestion() function in the JavaScript code
 // Add a button to bookmark the current question
@@ -25,7 +68,6 @@ const bookmarkButton = document.createElement("button");
     };
     questionContainer.insertBefore(bookmarkButton, questionContainer.firstChild); // Insert before the question
 }
-
 
 
 // Add this function to handle bookmarking of questions
