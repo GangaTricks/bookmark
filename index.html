@@ -1917,33 +1917,37 @@ function goToHome() {
 
 // Add this function to show bookmarked questions
 function showBookmarks() {
-	console.log("Show Bookmarks button clicked");
     const bookmarkedQuestions = getBookmarkedQuestions();
     const bookmarkedQuestionsContainer = document.getElementById("bookmarked-questions-container");
     bookmarkedQuestionsContainer.innerHTML = "";
 
     if (bookmarkedQuestions.length > 0) {
         bookmarkedQuestions.forEach((bookmarkKey) => {
-            const [topicIndex, questionIndex] = bookmarkKey.split('-').map(Number);
-            const question = topics[topicIndex].questions[questionIndex];
-            const questionDiv = document.createElement("div");
-            questionDiv.innerHTML = `
-                <p><strong>${topics[topicIndex].topic} - Question ${questionIndex + 1}:</strong> ${question.question}</p>
-                <div id="options-container-${questionIndex}"></div>
-                <button onclick="submitBookmarkedAnswer(${topicIndex}, ${questionIndex})">Submit Answer</button>
-            `;
-            bookmarkedQuestionsContainer.appendChild(questionDiv);
-
-            // Display options for the question
-            const optionsContainer = document.getElementById(`options-container-${questionIndex}`);
-            question.options.forEach((option, index) => {
-                const optionElement = document.createElement("div");
-                optionElement.innerHTML = `
-                    <input type="radio" name="bookmarked-option-${questionIndex}" value="${option}" id="bookmarked-option-${questionIndex}-${index}">
-                    <label for="bookmarked-option-${questionIndex}-${index}">${option}</label>
+            // Check if bookmarkKey is a string before attempting to split
+            if (typeof bookmarkKey === 'string') {
+                const [topicIndex, questionIndex] = bookmarkKey.split('-').map(Number);
+                const question = topics[topicIndex].questions[questionIndex];
+                const questionDiv = document.createElement("div");
+                questionDiv.innerHTML = `
+                    <p><strong>${topics[topicIndex].topic} - Question ${questionIndex + 1}:</strong> ${question.question}</p>
+                    <div id="options-container-${questionIndex}"></div>
+                    <button onclick="submitBookmarkedAnswer(${topicIndex}, ${questionIndex})">Submit Answer</button>
                 `;
-                optionsContainer.appendChild(optionElement);
-            });
+                bookmarkedQuestionsContainer.appendChild(questionDiv);
+
+                // Display options for the question
+                const optionsContainer = document.getElementById(`options-container-${questionIndex}`);
+                question.options.forEach((option, index) => {
+                    const optionElement = document.createElement("div");
+                    optionElement.innerHTML = `
+                        <input type="radio" name="bookmarked-option-${questionIndex}" value="${option}" id="bookmarked-option-${questionIndex}-${index}">
+                        <label for="bookmarked-option-${questionIndex}-${index}">${option}</label>
+                    `;
+                    optionsContainer.appendChild(optionElement);
+                });
+            } else {
+                console.error(`Invalid bookmarkKey: ${bookmarkKey}`);
+            }
         });
     } else {
         bookmarkedQuestionsContainer.textContent = "No questions bookmarked yet.";
